@@ -10,6 +10,8 @@
 "library.add" = "New submission";
 "library.empty.title" = "No submissions yet";
 "library.empty.message" = "Tap + to draft your first PokeStop submission.";
+"library.detail.placeholder.title" = "No submission selected";
+"library.detail.placeholder.message" = "Choose a submission from the list, or tap + to start a new one.";
 
 /* Editor */
 "editor.title" = "Submission";

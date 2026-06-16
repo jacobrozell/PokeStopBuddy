@@ -1,8 +1,14 @@
 import SwiftUI
+import UIKit
 
 /// The core journey screen: capture inputs → generate → review/iterate → save.
+///
+/// Adapts to width: a single scrolling form on iPhone portrait, and a two-column layout
+/// (inputs | generated + coach) when there's regular width — iPad, or a large phone in
+/// landscape (see `LayoutContext.editorUsesWideLayout`).
 struct SubmissionEditorView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.layoutContext) private var layout
     @State private var model: SubmissionEditorViewModel
     @State private var showVersions = false
 
@@ -19,13 +25,11 @@ struct SubmissionEditorView: View {
     }
 
     var body: some View {
-        Form {
-            inputsSection
-            generateSection
-            generatedSection
-            QualityPanel(report: model.quality)
-            if !model.versions.isEmpty {
-                versionsSection
+        Group {
+            if layout.editorUsesWideLayout {
+                wideLayout
+            } else {
+                narrowLayout
             }
         }
         .navigationTitle(L10n.string("editor.title"))
@@ -37,6 +41,41 @@ struct SubmissionEditorView: View {
             }
         }
         .accessibilityIdentifier(AccessibilityIDs.Editor.root)
+    }
+
+    // MARK: - Layouts
+
+    private var narrowLayout: some View {
+        Form {
+            inputsSection
+            generateSection
+            generatedSection
+            QualityPanel(report: model.quality)
+            if !model.versions.isEmpty {
+                versionsSection
+            }
+        }
+    }
+
+    private var wideLayout: some View {
+        HStack(alignment: .top, spacing: 0) {
+            Form {
+                inputsSection
+                generateSection
+            }
+            .frame(maxWidth: .infinity)
+
+            Divider()
+
+            Form {
+                generatedSection
+                QualityPanel(report: model.quality)
+                if !model.versions.isEmpty {
+                    versionsSection
+                }
+            }
+            .frame(maxWidth: .infinity)
+        }
     }
 
     // MARK: - Sections
@@ -140,8 +179,16 @@ struct SubmissionEditorView: View {
     }
 }
 
-#Preview {
+#Preview("Narrow") {
     NavigationStack {
         SubmissionEditorView(dependencies: .preview(), existing: nil, onSaved: {})
+            .environment(\.layoutContext, LayoutContext(idiom: .phone, horizontal: .compact, vertical: .regular))
+    }
+}
+
+#Preview("Wide") {
+    NavigationStack {
+        SubmissionEditorView(dependencies: .preview(), existing: nil, onSaved: {})
+            .environment(\.layoutContext, LayoutContext(idiom: .pad, horizontal: .regular, vertical: .regular))
     }
 }

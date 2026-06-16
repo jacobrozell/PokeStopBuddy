@@ -14,6 +14,7 @@ Authoritative product & system specs. Behavior described here is the contract;
 |------|---------|
 | [`governance.md`](governance.md) | Conflict resolution, spec rules |
 | [`architecture.md`](architecture.md) | Layers, dependency rules, module map |
+| [`app-shell.md`](app-shell.md) | IA, navigation, adaptive iPad/landscape layout |
 | [`tech-stack.md`](tech-stack.md) | Frameworks, min OS, SDKs |
 | [`design-system.md`](design-system.md) | Tokens, typography, semantic colors |
 | [`data-schema.md`](data-schema.md) | Persistence model + migration policy |

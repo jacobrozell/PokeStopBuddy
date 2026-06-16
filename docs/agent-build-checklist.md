@@ -28,7 +28,7 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 | 4 | Persistence & repositories | ✅ done |
 | 5 | App shell & navigation | ✅ done |
 | 6 | First vertical slice (core journey) | ✅ done |
-| 7 | Shared chrome & adaptive layout | 🟡 partial |
+| 7 | Shared chrome & adaptive layout | ✅ iPad split + two-column editor, idiom-aware predicates (tested) |
 | 8 | Entity management & settings | 🟡 partial (settings ✅) |
 | 9 | Lists, history & derived views | 🟡 partial (library ✅) |
 | 10 | Localization & text coverage | 🟡 `en` only |
@@ -50,6 +50,7 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 | 4 | 2026-06-16 | initial | repo protocol + in-memory + SwiftData |
 | 5 | 2026-06-16 | initial | app shell, DI, router |
 | 6 | 2026-06-16 | initial | editor vertical slice + library |
+| 7 | 2026-06-16 | adaptive | iPad NavigationSplitView, two-column editor, LayoutContext predicates + tests, landscape UI smoke |
 
 ## What needs a Mac (cannot be done in this Linux session)
 

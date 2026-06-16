@@ -16,6 +16,7 @@ Legend: ✅ shipped · 🟡 partial · 🔜 planned · 🧪 stub
 | Quality Coach panel | ✅ | live scoring in editor |
 | Settings + external links | ✅ | privacy/support/accessibility; tip jar hidden |
 | Design system tokens + components | ✅ | |
+| Adaptive layout (iPad split + two-column editor) | ✅ | pure `LayoutContext`, unit + landscape UI tests |
 | Localization (`en`) | ✅ | `L10n` wrapper |
 | Photo composition guidance | 🔜 | gated, v1.1 |
 | LLM "enhance" generation | 🔜 | gated, behind `ContentGenerating` |

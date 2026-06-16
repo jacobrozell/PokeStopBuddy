@@ -7,8 +7,8 @@ Legend: ✅ implemented in code · 🟡 partial · 🔜 needs device verificatio
 
 | Screen | Labels/IDs | Dynamic Type | Non-color cues | 44pt targets | Orientation | Device-verified |
 |--------|-----------|--------------|----------------|--------------|-------------|-----------------|
-| Submission Library | ✅ | ✅ semantic styles | ✅ score badge icon+text | ✅ | 🔜 | 🔜 |
-| Submission Editor | ✅ | ✅ | ✅ severity icon+text | ✅ generate/save/feature/eligibility | 🔜 | 🔜 |
+| Submission Library | ✅ | ✅ semantic styles | ✅ score badge icon+text | ✅ | 🟡 stack+split, UI smoke | 🔜 |
+| Submission Editor | ✅ | ✅ | ✅ severity icon+text | ✅ generate/save/feature/eligibility | 🟡 narrow+wide, landscape smoke | 🔜 |
 | Quality coach panel | ✅ | ✅ | ✅ | n/a | 🔜 | 🔜 |
 | Settings | ✅ | ✅ | ✅ | ✅ rows | 🔜 | 🔜 |
 | Persistence recovery | ✅ | ✅ | ✅ | ✅ reset | 🔜 | 🔜 |

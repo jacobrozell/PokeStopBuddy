@@ -1,0 +1,30 @@
+#!/bin/sh
+# Block accidental commits of secrets. Install with:
+#   ln -sf ../../Scripts/pre-commit .git/hooks/pre-commit
+set -e
+
+staged=$(git diff --cached --name-only)
+
+# 1. Block known secret file patterns.
+blocked=$(printf '%s\n' "$staged" | grep -E \
+  'GoogleService-Info\.plist|Secrets\.plist|\.secret\.|\.env$|\.p8$|\.p12$|\.mobileprovision$' || true)
+if [ -n "$blocked" ]; then
+  echo "✋ Refusing to commit possible secret files:"
+  echo "$blocked"
+  echo "Add them to .gitignore or use a template."
+  exit 1
+fi
+
+# 2. Block the generated Xcode project.
+if printf '%s\n' "$staged" | grep -qE '\.xcodeproj/'; then
+  echo "✋ .xcodeproj is generated — do not commit it. Run 'xcodegen generate'."
+  exit 1
+fi
+
+# 3. Heuristic: obvious API-key-shaped strings in staged content.
+if git diff --cached -U0 | grep -nE '(api[_-]?key|secret|password)\s*[:=]\s*["'"'"'][A-Za-z0-9_\-]{16,}' >/dev/null; then
+  echo "✋ Possible hard-coded secret in staged changes. Review before committing."
+  exit 1
+fi
+
+exit 0

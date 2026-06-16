@@ -1,0 +1,112 @@
+# XcodeGen project definition — single source of truth for targets & schemes.
+# Regenerate with: xcodegen generate
+name: PokeStopBuddy
+options:
+  bundleIdPrefix: com.pokestopbuddy
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: "" # set TEAM_ID locally / in CI; do not commit
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_STRICT_CONCURRENCY: complete
+
+targets:
+  PokeStopBuddy:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - App
+      - Features
+      - Domain
+      - Data
+      - Persistence
+      - DesignSystem
+      - Support
+      - path: Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pokestopbuddy.app
+        INFOPLIST_FILE: Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2" # iPhone + iPad
+        SUPPORTS_MACCATALYST: NO
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+    preBuildScripts:
+      - name: SwiftLint
+        script: |
+          if which swiftlint >/dev/null; then
+            swiftlint --quiet
+          else
+            echo "warning: SwiftLint not installed (brew install swiftlint)"
+          fi
+        basedOnDependencyAnalysis: false
+
+  PokeStopBuddyTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Tests/Unit
+      - Tests/Accessibility
+    dependencies:
+      - target: PokeStopBuddy
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pokestopbuddy.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+  PokeStopBuddyUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Tests/UI
+    dependencies:
+      - target: PokeStopBuddy
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pokestopbuddy.uitests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  # Fast PR scheme: unit + accessibility only (keeps PRs to minutes).
+  PokeStopBuddyCI:
+    build:
+      targets:
+        PokeStopBuddy: all
+    test:
+      targets:
+        - PokeStopBuddyTests
+      gatherCoverageData: true
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+  # Full scheme: app + UI tests.
+  PokeStopBuddy:
+    build:
+      targets:
+        PokeStopBuddy: all
+        PokeStopBuddyTests: [test]
+        PokeStopBuddyUITests: [test]
+    test:
+      targets:
+        - PokeStopBuddyTests
+        - PokeStopBuddyUITests
+    run:
+      config: Debug

@@ -1,0 +1,52 @@
+disabled_rules:
+  - trailing_whitespace
+  - todo
+
+opt_in_rules:
+  - empty_count
+  - closure_spacing
+  - explicit_init
+  - first_where
+  - sorted_imports
+  - unneeded_parentheses_in_closure_argument
+
+included:
+  - App
+  - Features
+  - Domain
+  - Data
+  - Persistence
+  - DesignSystem
+  - Support
+  - Tests
+
+excluded:
+  - .build
+  - DerivedData
+  - Resources
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_comments: true
+  ignores_urls: true
+
+type_body_length:
+  warning: 300
+  error: 400
+
+file_length:
+  warning: 400
+  error: 600
+
+# Domain must never import SwiftUI (enforced here as a guardrail).
+custom_rules:
+  domain_no_swiftui:
+    name: "Domain must not import SwiftUI"
+    regex: "import SwiftUI"
+    match_kinds:
+      - keyword
+      - identifier
+    included: "Domain/.*"
+    message: "Domain layer is pure logic — no SwiftUI imports allowed."
+    severity: error

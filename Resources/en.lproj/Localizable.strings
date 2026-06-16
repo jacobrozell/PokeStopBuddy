@@ -1,0 +1,61 @@
+/* Base locale (en) — source of truth. New keys must land in every bundled locale. */
+
+/* Common */
+"common.done" = "Done";
+"common.cancel" = "Cancel";
+"common.ok" = "OK";
+
+/* Library */
+"library.title" = "Submissions";
+"library.add" = "New submission";
+"library.empty.title" = "No submissions yet";
+"library.empty.message" = "Tap + to draft your first PokeStop submission.";
+
+/* Editor */
+"editor.title" = "Submission";
+"editor.save" = "Save";
+"editor.section.about" = "About this place";
+"editor.section.generated" = "Submission content";
+"editor.placeName" = "Place name";
+"editor.category" = "Category";
+"editor.style" = "Writing style";
+"editor.keyFeatures" = "Key features";
+"editor.addFeature" = "Add a feature";
+"editor.removeFeature" = "Remove %@";
+"editor.eligibility" = "Why is it eligible?";
+"editor.locationHint" = "How to find it (optional)";
+"editor.accessNotes" = "Public access notes (optional)";
+"editor.generate" = "Generate content";
+"editor.field.title" = "Title";
+"editor.field.description" = "Description";
+"editor.field.supporting" = "Supporting statement";
+"editor.copyAll" = "Copy all";
+"editor.versions" = "Version history (%d)";
+"editor.version.generated" = "Generated";
+"editor.version.edited" = "Manual edit";
+"editor.untitled" = "Untitled";
+
+/* Quality coach */
+"quality.title" = "Quality coach";
+"quality.allClear" = "Looks great — no issues found.";
+"quality.scoreValue" = "Quality score %d of 100";
+"quality.severity.blocker" = "Blocker";
+"quality.severity.warning" = "Warning";
+"quality.severity.tip" = "Tip";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.section.about" = "Reference";
+"settings.section.legal" = "Support & legal";
+"settings.wayfarer" = "Wayfarer guidelines";
+"settings.privacy" = "Privacy policy";
+"settings.support" = "Support";
+"settings.accessibility" = "Accessibility statement";
+"settings.tip" = "Leave a tip";
+"settings.deleteAll" = "Delete all submissions";
+"settings.deleteAll.confirm" = "Delete all submissions? This can't be undone.";
+
+/* Errors */
+"error.load_failed" = "Couldn't load your submissions.";
+"error.save_failed" = "Couldn't save this submission.";
+"error.delete_failed" = "Couldn't delete.";

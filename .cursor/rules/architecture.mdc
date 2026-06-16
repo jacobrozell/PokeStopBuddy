@@ -1,0 +1,35 @@
+---
+description: Core architecture & process rules for PokeStop Buddy
+alwaysApply: true
+---
+
+# Architecture rules
+
+- Layers: Features → Domain / Data interfaces → Persistence. **Domain never imports
+  SwiftUI or SwiftData** (SwiftLint enforces the SwiftUI ban).
+- Features depend on protocols (`any SubmissionRepository`, `ContentGenerating`),
+  never concrete persistence types.
+- No business rules in `View.body`. Logic in ViewModel/Domain.
+
+# Process rules
+
+- Spec-first: no user-visible behavior without a spec in `specs/`. Update the spec
+  Verification block and `docs/feature-inventory.md` when behavior changes.
+- Test-first for domain & ViewModels. `Tests/Unit` before UI polish.
+- Project is generated: run `xcodegen generate`; never commit `.xcodeproj`.
+- Build/test with scheme `PokeStopBuddyCI`.
+
+# Layout (phone vs iPad)
+
+- Detect landscape with `verticalSizeClass == .compact`.
+- Distinguish phone vs iPad with `UIDevice.current.userInterfaceIdiom`, **not**
+  horizontal size class alone (Pro Max landscape ≠ iPad).
+
+# UI test identifiers
+
+- Convention `screen.element`, centralized in `Support/AccessibilityIDs.swift`.
+
+# Accessibility
+
+- Every interactive control: label, optional hint, stable identifier, ≥44pt target.
+- Latest manual audit lives in `accessibility/audits/`.

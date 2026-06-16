@@ -1,0 +1,38 @@
+# Generated Xcode project (regenerate with `xcodegen generate`)
+*.xcodeproj
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+
+# Xcode / build
+DerivedData/
+build/
+.build/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+
+# Secrets — never commit real credentials
+**/GoogleService-Info.plist
+**/Secrets.plist
+**/*.secret.*
+.env
+*.p8
+*.p12
+*.mobileprovision
+
+# macOS
+.DS_Store
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output

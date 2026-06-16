@@ -63,7 +63,3 @@ public final class SwiftDataSubmissionRepository: SubmissionRepository {
         return try context.fetch(descriptor).first
     }
 }
-
-// SwiftDataSubmissionRepository is @MainActor-isolated; conformance to the Sendable
-// `SubmissionRepository` is satisfied by that isolation.
-extension SwiftDataSubmissionRepository: @unchecked Sendable {}

@@ -68,8 +68,16 @@ struct SettingsView: View {
                 }
                 Button(L10n.string("common.cancel"), role: .cancel) {}
             }
-            .alert(L10n.string("error.delete_failed"), isPresented: .constant(deleteError != nil)) {
+            .alert(
+                L10n.string("error.delete_failed"),
+                isPresented: Binding(
+                    get: { deleteError != nil },
+                    set: { if !$0 { deleteError = nil } }
+                )
+            ) {
                 Button(L10n.string("common.ok")) { deleteError = nil }
+            } message: {
+                if let deleteError { Text(deleteError) }
             }
         }
     }

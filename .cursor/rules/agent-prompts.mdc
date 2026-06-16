@@ -1,0 +1,14 @@
+---
+description: Pointers to reusable agent prompts and where outputs live
+alwaysApply: false
+---
+
+When the user says **accessibility audit**, **user scenario**, **release gate**, or
+**architecture review**, open `docs/agent-build-checklist.md` § "Agent prompt library"
+and follow the matching prompt. Each prompt must produce a **dated artifact**, not just
+chat output:
+
+- accessibility audit → `accessibility/audits/YYYY-MM-DD-*.md` (update `accessibility/wcag-tracker.md`)
+- user scenario → `docs/scenarios/YYYY-MM-DD-*.md` + an integration/UI test
+- release gate → check against `specs/feature-flags.md` + `docs/release/release_checklist.md`
+- architecture review → read-only summary; multi-phase plans go in `docs/plans/`

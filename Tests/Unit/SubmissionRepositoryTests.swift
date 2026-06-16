@@ -1,6 +1,7 @@
 import XCTest
 @testable import PokeStopBuddy
 
+@MainActor
 final class InMemorySubmissionRepositoryTests: XCTestCase {
     func testSaveAndFetch() throws {
         let repo = InMemorySubmissionRepository()

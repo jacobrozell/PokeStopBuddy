@@ -30,6 +30,10 @@ public final class SubmissionLibraryViewModel {
         }
     }
 
+    public func clearError() {
+        errorMessage = nil
+    }
+
     /// Cached quality score for a row (avoids re-evaluating on every redraw).
     public func score(for submission: Submission) -> Int {
         if let cached = scoreCache[submission.id] { return cached }
@@ -46,6 +50,19 @@ public final class SubmissionLibraryViewModel {
         } catch {
             errorMessage = L10n.string("error.delete_failed")
             AppLog.data.error("Delete failed: \(String(describing: error))")
+        }
+    }
+
+    /// Case-insensitive filter across title, place name, category, and status.
+    public func filteredSubmissions(matching query: String) -> [Submission] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return submissions }
+        let needle = trimmed.lowercased()
+        return submissions.filter { submission in
+            submission.displayTitle.lowercased().contains(needle)
+                || submission.inputs.placeName.lowercased().contains(needle)
+                || submission.inputs.category.displayName.lowercased().contains(needle)
+                || submission.status.displayName.lowercased().contains(needle)
         }
     }
 }

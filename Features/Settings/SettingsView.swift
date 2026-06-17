@@ -3,9 +3,11 @@ import SwiftUI
 /// Settings: external links + destructive "delete all" with confirmation.
 struct SettingsView: View {
     let dependencies: AppDependencies
+    var onOpenGuide: () -> Void = {}
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteConfirm = false
     @State private var deleteError: String?
+    @State private var showsOnboarding = false
 
     var body: some View {
         @Bindable var preferences = dependencies.preferences
@@ -37,6 +39,18 @@ struct SettingsView: View {
                 }
 
                 Section(L10n.string("settings.section.about")) {
+                    Button {
+                        showsOnboarding = true
+                    } label: {
+                        Label(L10n.string("settings.onboarding"), systemImage: "book.pages")
+                    }
+                    .accessibilityIdentifier(AccessibilityIDs.Settings.onboardingLink)
+
+                    Button(action: onOpenGuide) {
+                        Label(L10n.string("settings.guide"), systemImage: "book")
+                    }
+                    .accessibilityIdentifier(AccessibilityIDs.Settings.guideLink)
+
                     Link(destination: AppLinks.wayfarerGuidelines) {
                         Label(L10n.string("settings.wayfarer"), systemImage: "book")
                     }
@@ -105,12 +119,21 @@ struct SettingsView: View {
             } message: {
                 if let deleteError { Text(deleteError) }
             }
+            .fullScreenCover(isPresented: $showsOnboarding) {
+                OnboardingFlowView(
+                    mode: .replay,
+                    dependencies: dependencies,
+                    onFinished: { showsOnboarding = false }
+                )
+            }
         }
     }
 
     private func deleteAll() {
         do {
             try dependencies.repository.deleteAll()
+            HapticFeedback.success()
+            dismiss()
         } catch {
             deleteError = error.localizedDescription
         }

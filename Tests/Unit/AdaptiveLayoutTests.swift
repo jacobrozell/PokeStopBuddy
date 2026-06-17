@@ -42,6 +42,35 @@ final class AdaptiveLayoutTests: XCTestCase {
         XCTAssertFalse(context(.phone, .compact, .regular).editorUsesWideLayout)
     }
 
+    func testStandardPhoneLandscape_usesWideEditor() {
+        // iPhone 16-class devices report compact width in landscape but benefit from
+        // two columns because vertical space is scarce.
+        XCTAssertTrue(context(.phone, .compact, .compact).editorUsesWideLayout)
+    }
+
+    func testAccessibilityTextSize_prefersStackedEditor() {
+        let wide = context(.pad, .regular, .regular)
+        XCTAssertTrue(wide.editorUsesWideLayout)
+        XCTAssertFalse(wide.effectiveEditorUsesWideLayout(isAccessibilityTextSize: true))
+        XCTAssertTrue(wide.effectiveEditorUsesWideLayout(isAccessibilityTextSize: false))
+    }
+
+    func testPhoneLandscape_usesToolbarGenerate() {
+        XCTAssertTrue(context(.phone, .compact, .compact).editorShowsToolbarGenerate)
+    }
+
+    func testProMaxLandscape_usesToolbarGenerate() {
+        XCTAssertTrue(context(.phone, .regular, .compact).editorShowsToolbarGenerate)
+    }
+
+    func testIPadWideLandscape_hidesToolbarGenerate() {
+        XCTAssertFalse(context(.pad, .regular, .compact).editorShowsToolbarGenerate)
+    }
+
+    func testIPadSlideOverLandscape_mayUseToolbarGenerate() {
+        XCTAssertTrue(context(.pad, .compact, .compact).editorShowsToolbarGenerate)
+    }
+
     // MARK: - Landscape detection
 
     func testLandscapeDetectedFromCompactVertical() {

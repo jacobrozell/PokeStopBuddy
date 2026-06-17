@@ -19,11 +19,23 @@ public struct ScoreBadge: View {
     private var level: Level {
         switch score {
         case 80...:
-            return Level(symbol: "checkmark.seal.fill", color: Theme.Colors.success, label: "Strong")
+            return Level(
+                symbol: "checkmark.seal.fill",
+                color: Theme.Colors.success,
+                label: L10n.string("quality.level.strong")
+            )
         case 50..<80:
-            return Level(symbol: "exclamationmark.triangle.fill", color: Theme.Colors.warning, label: "Needs work")
+            return Level(
+                symbol: "exclamationmark.triangle.fill",
+                color: Theme.Colors.warning,
+                label: L10n.string("quality.level.needsWork")
+            )
         default:
-            return Level(symbol: "exclamationmark.octagon.fill", color: Theme.Colors.critical, label: "Not ready")
+            return Level(
+                symbol: "exclamationmark.octagon.fill",
+                color: Theme.Colors.critical,
+                label: L10n.string("quality.level.notReady")
+            )
         }
     }
 
@@ -42,6 +54,6 @@ public struct ScoreBadge: View {
         .background(level.color.opacity(0.12), in: Capsule())
         .accessibilityElement(children: .ignore)
         .accessibilityIdentifier(identifier)
-        .accessibilityLabel(Text("Quality \(level.label), \(score) of 100"))
+        .accessibilityLabel(Text(L10n.string("quality.scoreValue", score) + ", \(level.label)"))
     }
 }

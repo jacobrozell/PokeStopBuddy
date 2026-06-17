@@ -21,8 +21,17 @@ struct LabeledField: View {
                     .accessibilityHidden(true)
             }
             TextField(label, text: $text, axis: .vertical)
+                .lineLimit(3...8)
                 .accessibilityIdentifier(identifier)
                 .accessibilityLabel(Text(label))
+                .accessibilityValue(Text(characterCountAccessibilityValue))
         }
+    }
+
+    private var characterCountAccessibilityValue: String {
+        if text.count > limit {
+            return L10n.string("editor.field.overLimit", text.count, limit)
+        }
+        return L10n.string("editor.field.characterCount", text.count, limit)
     }
 }

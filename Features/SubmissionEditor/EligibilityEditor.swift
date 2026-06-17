@@ -6,9 +6,14 @@ struct EligibilityEditor: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text(L10n.string("editor.eligibility"))
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.Colors.textSecondary)
+            HStack {
+                Text(L10n.string("editor.eligibility"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.Colors.textSecondary)
+                    .accessibilityAddTraits(.isHeader)
+                Spacer()
+                GuideInfoButton(topic: .eligibility)
+            }
             ForEach(EligibilityCriterion.allCases) { criterion in
                 Button {
                     toggle(criterion)
@@ -16,12 +21,15 @@ struct EligibilityEditor: View {
                     HStack {
                         Image(systemName: selection.contains(criterion) ? "checkmark.circle.fill" : "circle")
                         Text(criterion.displayName)
+                            .multilineTextAlignment(.leading)
                         Spacer()
                     }
                     .frame(minHeight: Theme.minTouchTarget)
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(Text(criterion.displayName))
+                .accessibilityHint(Text(L10n.string("editor.eligibility.toggleHint")))
                 .accessibilityAddTraits(selection.contains(criterion) ? .isSelected : [])
             }
         }

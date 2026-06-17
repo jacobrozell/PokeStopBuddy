@@ -74,4 +74,23 @@ final class SubmissionEditorViewModelTests: XCTestCase {
         XCTAssertTrue(text.contains("Description:"))
         XCTAssertTrue(text.contains("Supporting:"))
     }
+
+    func testCanSave_requiresPlaceName() {
+        let model = makeModel()
+        XCTAssertFalse(model.canSave)
+        XCTAssertFalse(model.canGenerate)
+        model.inputs.placeName = "   "
+        XCTAssertFalse(model.canSave)
+        model.inputs.placeName = "Town Square"
+        XCTAssertTrue(model.canSave)
+        XCTAssertTrue(model.canGenerate)
+    }
+
+    func testHasShareableContent_requiresTitle() {
+        let model = makeModel()
+        XCTAssertFalse(model.hasShareableContent)
+        model.inputs.placeName = "Park"
+        model.generate()
+        XCTAssertTrue(model.hasShareableContent)
+    }
 }

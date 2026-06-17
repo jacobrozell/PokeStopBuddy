@@ -18,7 +18,8 @@ their own values (verified by `AppPreferencesTests`).
 ## Screen
 
 Settings is presented as a sheet from the library on both idioms. Sections:
-appearance, new-submission defaults, reference (Wayfarer guidelines), support & legal
+appearance, new-submission defaults, reference (submission guide + Wayfarer guidelines),
+support & legal
 (privacy / support / accessibility; tip jar only when `AppLinks.tipJar != nil`), and a
 destructive **Delete all submissions** with confirmation.
 

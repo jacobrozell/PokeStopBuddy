@@ -20,6 +20,8 @@ Legend: ✅ shipped · 🟡 partial · 🔜 planned · 🧪 stub
 | Adaptive layout (iPad split + two-column editor) | ✅ | pure `LayoutContext`, unit + landscape UI tests |
 | Localization (`en`) | ✅ | `L10n` wrapper + parity/drift test |
 | Copy-all / ShareLink for submission content | ✅ | quick hand-off into Wayfarer |
+| Submission Guide (process, fields, categories, eligibility) | 🟡 | sheet + placeholder GO assets; replace with real captures |
+| Launch splash + first-run onboarding | 🟡 | v1.1; spec in `specs/features/onboarding-and-launch.md` |
 | Photo composition guidance | 🔜 | gated, v1.1 |
 | LLM "enhance" generation | 🔜 | gated, behind `ContentGenerating` |
 | Export / share pack | 🔜 | gated, v1.2 |

@@ -4,18 +4,57 @@
 "common.done" = "Done";
 "common.cancel" = "Cancel";
 "common.ok" = "OK";
+"common.back" = "Back";
+"common.continue" = "Continue";
+"common.skip" = "Skip";
+
+/* Brand */
+"brand.title" = "PokeStop Buddy";
+
+/* Launch */
+"launch.loading" = "Loading PokeStop Buddy";
+
+/* Onboarding */
+"onboarding.stepProgress" = "Step %d of %d";
+"onboarding.welcome.title" = "Draft better submissions";
+"onboarding.welcome.body" = "PokeStop Buddy helps you write, refine, and quality-check Wayfarer nomination text before you submit in Pokémon GO.";
+"onboarding.defaults.title" = "Set your defaults";
+"onboarding.defaults.body" = "Choose how new submissions start. You can change these anytime in Settings.";
+"onboarding.howItWorks.title" = "How it works";
+"onboarding.howItWorks.body" = "Three quick steps from idea to ready-to-paste content.";
+"onboarding.howItWorks.draft.title" = "Describe the place";
+"onboarding.howItWorks.draft.body" = "Enter the name, category, and what makes it eligible.";
+"onboarding.howItWorks.generate.title" = "Generate content";
+"onboarding.howItWorks.generate.body" = "Get a title, description, and supporting statement you can edit.";
+"onboarding.howItWorks.submit.title" = "Copy into Wayfarer";
+"onboarding.howItWorks.submit.body" = "Paste into the official nomination form when you're happy with the draft.";
+"onboarding.ready.title" = "You're ready";
+"onboarding.ready.body" = "Tap + on the library to start your first submission, or open the guide anytime for field-by-field help.";
+"onboarding.ready.action" = "Open library";
 
 /* Library */
 "library.title" = "Submissions";
 "library.add" = "New submission";
 "library.empty.title" = "No submissions yet";
-"library.empty.message" = "Tap + to draft your first PokeStop submission.";
+"library.empty.message" = "Tap + to draft your first PokéStop, or open the guide to learn how nominations work.";
 "library.detail.placeholder.title" = "No submission selected";
-"library.detail.placeholder.message" = "Choose a submission from the list, or tap + to start a new one.";
+"library.detail.placeholder.message" = "Select a submission in the sidebar, or tap + to start a new draft.";
+"library.row.hint" = "Opens this submission in the editor.";
+"library.search.prompt" = "Search submissions";
+"library.search.empty" = "No submissions match your search.";
+"library.delete.confirm" = "Delete this submission?";
+"library.delete.action" = "Delete";
+"library.delete.message" = "“%@” will be removed from this device. This can't be undone.";
 
 /* Editor */
 "editor.title" = "Submission";
 "editor.save" = "Save";
+"editor.save.hint" = "Saves this submission to your library.";
+"editor.save.disabledHint" = "Enter a place name before saving.";
+"editor.savedBanner" = "Saved";
+"editor.generated.empty" = "Generate content to fill in title, description, and supporting statement.";
+"editor.field.characterCount" = "%d of %d characters";
+"editor.field.overLimit" = "%d of %d characters, over the limit";
 "editor.section.about" = "About this place";
 "editor.section.generated" = "Submission content";
 "editor.placeName" = "Place name";
@@ -32,19 +71,29 @@
 "editor.field.description" = "Description";
 "editor.field.supporting" = "Supporting statement";
 "editor.copyAll" = "Copy all";
+"editor.copied" = "Copied";
 "editor.share" = "Share";
 "editor.versions" = "Version history (%d)";
 "editor.version.generated" = "Generated";
 "editor.version.edited" = "Manual edit";
 "editor.untitled" = "Untitled";
+"editor.announcement.generated" = "Content generated.";
+"editor.announcement.saved" = "Submission saved.";
+"editor.announcement.copied" = "Copied to clipboard.";
+"editor.eligibility.toggleHint" = "Double tap to toggle.";
 
 /* Quality coach */
 "quality.title" = "Quality coach";
 "quality.allClear" = "Looks great — no issues found.";
 "quality.scoreValue" = "Quality score %d of 100";
+"quality.level.strong" = "Strong";
+"quality.level.needsWork" = "Needs work";
+"quality.level.notReady" = "Not ready";
 "quality.severity.blocker" = "Blocker";
 "quality.severity.warning" = "Warning";
 "quality.severity.tip" = "Tip";
+"quality.announcement.score" = "Quality score %d of 100.";
+"quality.issue.focusHint" = "Double tap to jump to the related field.";
 
 /* Settings */
 "settings.title" = "Settings";
@@ -54,6 +103,8 @@
 "settings.defaultStyle" = "Writing style";
 "settings.defaultCategory" = "Category";
 "settings.section.about" = "Reference";
+"settings.guide" = "Submission guide";
+"settings.onboarding" = "View onboarding";
 "settings.section.legal" = "Support & legal";
 "settings.wayfarer" = "Wayfarer guidelines";
 "settings.privacy" = "Privacy policy";
@@ -67,3 +118,178 @@
 "error.load_failed" = "Couldn't load your submissions.";
 "error.save_failed" = "Couldn't save this submission.";
 "error.delete_failed" = "Couldn't delete.";
+
+/* Persistence recovery */
+"persistence.error.title" = "Couldn't open your data";
+"persistence.error.message" = "Something went wrong opening local storage.";
+"persistence.error.resetDone" = "Local data was reset. Please relaunch PokeStop Buddy.";
+"persistence.error.resetButton" = "Reset local data";
+
+/* Submission guide */
+"guide.title" = "Submission guide";
+"guide.emptyLink" = "Learn how nominations work";
+"guide.wayfarerLink" = "Open Wayfarer guidelines";
+"guide.infoButton.label" = "Learn about %@";
+"guide.infoButton.hint" = "Opens a guide article with more detail.";
+"guide.hub.card.label" = "%@. %@";
+"guide.hub.card.hint" = "Opens this guide topic.";
+"guide.wayfarerLink.hint" = "Opens Niantic's official Wayfarer help in Safari.";
+"guide.callout.kind.tip" = "Tip";
+"guide.callout.kind.do" = "Do";
+"guide.callout.kind.dont" = "Don't";
+"guide.callout.summary" = "%@. %@. %@";
+"guide.categories.row.hint" = "Shows example key features for this category.";
+"guide.categories.row.collapsed" = "%@. Typical eligibility: %@";
+"guide.categories.row.expanded" = "%@. Typical eligibility: %@. Examples: %@";
+
+"editor.category.typicalPillars" = "Typical eligibility";
+"editor.category.pillarSummary" = "Typical eligibility: %@";
+
+"guide.buddy.title" = "In PokeStop Buddy";
+"guide.related.title" = "Related topics";
+"guide.screenshot.placeholder" = "Illustrated guide";
+"guide.schematic.appMenu" = "Main menu";
+"guide.schematic.settings" = "Settings";
+"guide.schematic.uploads" = "Uploads";
+"guide.schematic.newPokestop" = "New PokéStop";
+"guide.schematic.pinOnObject" = "Pin on the object";
+"guide.schematic.mainPhoto" = "Main photo frame";
+"guide.schematic.supportingPhoto" = "Supporting photo frame";
+"guide.schematic.titleField" = "Title";
+"guide.schematic.descriptionField" = "Description";
+"guide.schematic.sampleTitle" = "Town Square Fountain";
+"guide.schematic.sampleDescription" = "Historic fountain in the town square, built in 1924.";
+"guide.schematic.tag.library" = "Library";
+"guide.schematic.tag.publicArt" = "Public Art";
+"guide.schematic.tag.park" = "Park";
+"guide.schematic.tag.other" = "Other";
+"guide.schematic.previewTitle" = "Preview";
+"guide.schematic.supportingHeading" = "Supporting information";
+"guide.schematic.eligibilityPillar" = "Exploration eligibility";
+"guide.schematic.additionalInfo" = "Additional information";
+"guide.schematic.sampleSupporting" = "This mural celebrates local artists and is visible from the sidewalk.";
+"guide.schematic.uploadNow" = "Upload now";
+"guide.schematic.uploadLater" = "Upload later";
+"guide.schematic.generic" = "In-game screen";
+
+"guide.topic.process.title" = "Nomination process";
+"guide.topic.process.summary" = "Step-by-step flow in Pokémon GO";
+"guide.topic.fields.title" = "Field reference";
+"guide.topic.fields.summary" = "How app fields map to Wayfarer";
+"guide.topic.categories.title" = "Categories & tags";
+"guide.topic.categories.summary" = "Pick the right Wayspot category";
+"guide.topic.eligibility.title" = "Eligibility pillars";
+"guide.topic.eligibility.summary" = "Exploration, exercise, and social";
+"guide.topic.photos.title" = "Photos & location";
+"guide.topic.photos.summary" = "Pin placement and photo tips";
+"guide.topic.copyWorkflow.title" = "Copy into Pokémon GO";
+"guide.topic.copyWorkflow.summary" = "Paste your draft into the real form";
+
+"guide.process.intro" = "Nominating a PokéStop happens inside Pokémon GO (or the Wayfarer website). PokeStop Buddy helps you draft the text before you paste it in.";
+"guide.process.section.prerequisites.heading" = "Before you start";
+"guide.process.section.prerequisites.body" = "You need an eligible Pokémon GO account and to be physically near the location you want to nominate.";
+"guide.process.callout.requirements.title" = "Access requirements";
+"guide.process.callout.requirements.body" = "Niantic may change level and onboarding requirements. Check the official Pokémon GO help center for the latest rules.";
+"guide.process.section.steps.heading" = "The nine steps";
+"guide.process.step.1" = "Open Main Menu → Settings → Uploads → New PokéStop.";
+"guide.process.step.2" = "Place the pin on the object — not where you're standing.";
+"guide.process.step.3" = "Take a clear main photo of the nominated object.";
+"guide.process.step.4" = "Take a supporting photo showing the surrounding area.";
+"guide.process.step.5" = "Enter the title and description (paste from PokeStop Buddy).";
+"guide.process.step.6" = "Choose a category tag that best fits the location.";
+"guide.process.step.7" = "Preview everything before you continue.";
+"guide.process.step.8" = "Add supporting information explaining why it's eligible.";
+"guide.process.step.9" = "Upload now or later — then community reviewers evaluate it.";
+"guide.process.buddy" = "Draft title, description, and supporting text here first. Use Copy all when you're ready to paste into steps 5 and 8.";
+
+"guide.fields.intro" = "Some fields exist only in PokeStop Buddy to help generation. Others paste directly into Pokémon GO.";
+"guide.fields.section.inputs.heading" = "Drafting inputs";
+"guide.fields.row.placeName" = "Place name — your working name; becomes the generated title.";
+"guide.fields.row.category" = "Category — matches Step 6; shapes description wording.";
+"guide.fields.row.style" = "Writing style — app-only tone (concise, descriptive, formal).";
+"guide.fields.row.keyFeatures" = "Key features — short bullets fed into the description generator.";
+"guide.fields.row.eligibility" = "Eligibility — pick at least one pillar for the supporting statement.";
+"guide.fields.row.locationHint" = "How to find it — paste into supporting info to help reviewers.";
+"guide.fields.row.accessNotes" = "Access notes — pedestrian access, hours, or safety context.";
+"guide.fields.section.generated.heading" = "Generated content (paste into GO)";
+"guide.fields.row.title" = "Title — Step 5, max 100 characters.";
+"guide.fields.row.description" = "Description — Step 5, max 250 characters.";
+"guide.fields.row.supporting" = "Supporting statement — Step 8 additional information.";
+"guide.fields.buddy" = "Generate after filling inputs, then edit any field manually before copying.";
+
+"guide.categories.intro" = "Pokémon GO asks you to categorize the location. Pick the closest match — it helps reviewers understand the nomination.";
+"guide.categories.section.picker.heading" = "In Pokémon GO";
+"guide.categories.section.picker.body" = "Choose from tags like Library, Public Art, or Other. If nothing fits, select Other and explain in the description.";
+"guide.categories.section.reference.heading" = "Category reference";
+"guide.categories.section.reference.body" = "Tap a category to see example key features and which eligibility pillars usually apply.";
+"guide.categories.buddy" = "The Category picker in the editor matches these tags and tunes generated descriptions.";
+"guide.categories.examples.publicArt" = "e.g. hand-painted mural, bronze sculpture, 2019 commission";
+"guide.categories.examples.historicalMarker" = "e.g. erected 1952, commemorates founding of the town";
+"guide.categories.examples.monument" = "e.g. war memorial, dedicated 1920, granite obelisk";
+"guide.categories.examples.building" = "e.g. Art Deco facade, listed landmark, built 1931";
+"guide.categories.examples.placeOfWorship" = "e.g. historic chapel, open to visitors on weekends";
+"guide.categories.examples.library" = "e.g. Carnegie library, Little Free Library on public sidewalk";
+"guide.categories.examples.park" = "e.g. neighborhood park, playground and picnic area";
+"guide.categories.examples.playground" = "e.g. public playground, rubber surface, city-maintained";
+"guide.categories.examples.trailhead" = "e.g. Riverside Trail marker, 4-mile loop";
+"guide.categories.examples.sportsField" = "e.g. community ball field, public hours posted";
+"guide.categories.examples.fountain" = "e.g. plaza fountain, centerpiece of town square";
+"guide.categories.examples.garden" = "e.g. community garden, public beds and paths";
+"guide.categories.examples.localBusiness" = "e.g. longtime local landmark — avoid generic chain stores";
+"guide.categories.examples.other" = "Use when no tag fits; explain what it is in key features and description";
+
+"guide.eligibility.intro" = "Every nomination must meet at least one of Niantic's three eligibility pillars. Eligibility alone doesn't guarantee acceptance.";
+"guide.eligibility.section.pillars.heading" = "The three pillars";
+"guide.eligibility.pillar.historicCultural" = "Exploration — historic, cultural, or educational significance; teaches about the community.";
+"guide.eligibility.pillar.exercise" = "Exercise — encourages walking, sports, or outdoor activity.";
+"guide.eligibility.pillar.socialExploration" = "Social — a gathering place to meet, explore, or share an experience.";
+"guide.eligibility.section.rules.heading" = "Rules of thumb";
+"guide.eligibility.rule.oneRequired" = "Select at least one pillar that genuinely applies.";
+"guide.eligibility.rule.notEnough" = "Meeting a pillar is necessary but not sufficient — acceptance criteria still apply.";
+"guide.eligibility.rule.noGameMentions" = "Never mention Pokémon GO or ask reviewers to approve your nomination.";
+"guide.eligibility.callout.mistakes.title" = "Common rejections";
+"guide.eligibility.callout.mistakes.body" = "K–12 school grounds, private residences, temporary objects, emergency services, and duplicates too close to existing Wayspots.";
+"guide.eligibility.buddy" = "Use Why is it eligible? in the editor — selections feed the supporting statement generator.";
+
+"guide.photos.intro" = "Photos and pin placement happen only in Pokémon GO. Good visuals help reviewers confirm the location exists.";
+"guide.photos.section.pin.heading" = "Pin placement";
+"guide.photos.section.pin.body" = "Drag the pin onto the object you're nominating. A misplaced pin is a common reason for rejection.";
+"guide.photos.section.main.heading" = "Main photo";
+"guide.photos.tip.main.clear" = "Well-lit, in focus, and close enough to identify the object.";
+"guide.photos.tip.main.close" = "Show the nominated feature — not just a distant building.";
+"guide.photos.tip.main.noFaces" = "Avoid identifiable faces and license plates when possible.";
+"guide.photos.section.supporting.heading" = "Supporting photo";
+"guide.photos.section.supporting.body" = "Show the surroundings so reviewers can verify the location on maps or Street View.";
+"guide.photos.buddy" = "Use How to find it and Access notes to explain what photos can't show (gated access, rear entrance, etc.).";
+
+"guide.copyWorkflow.intro" = "After drafting in PokeStop Buddy, copy your text into Pokémon GO at the right steps.";
+"guide.copyWorkflow.section.steps.heading" = "Recommended workflow";
+"guide.copyWorkflow.step.1" = "Fill in place name, category, features, and eligibility in the editor.";
+"guide.copyWorkflow.step.2" = "Tap Generate content and review the Quality coach.";
+"guide.copyWorkflow.step.3" = "Fine-tune text or regenerate until blockers are resolved.";
+"guide.copyWorkflow.step.4" = "Tap Copy all (or Share) in the editor.";
+"guide.copyWorkflow.step.5" = "In Pokémon GO, paste into Title and Description at Step 5.";
+"guide.copyWorkflow.step.6" = "Paste the supporting statement at Step 8, then complete photos and upload.";
+"guide.copyWorkflow.callout.uploadLater.title" = "Weak signal?";
+"guide.copyWorkflow.callout.uploadLater.body" = "Choose Upload Later in Pokémon GO and submit when you're on Wi‑Fi.";
+"guide.copyWorkflow.buddy" = "Save your draft in the library so you can iterate before visiting the site.";
+
+"guide.screenshot.menu.caption" = "Settings → Uploads → New PokéStop";
+"guide.screenshot.menu.a11y" = "Pokémon GO Settings screen with Uploads and New PokéStop highlighted";
+"guide.screenshot.map.caption" = "Place the pin on the object";
+"guide.screenshot.map.a11y" = "Map view with nomination pin on a landmark";
+"guide.screenshot.mainPhoto.caption" = "Main photo of the object";
+"guide.screenshot.mainPhoto.a11y" = "Camera screen for the main nomination photo";
+"guide.screenshot.supportingPhoto.caption" = "Supporting photo of the area";
+"guide.screenshot.supportingPhoto.a11y" = "Camera screen for the supporting surroundings photo";
+"guide.screenshot.titleDescription.caption" = "Title and description fields";
+"guide.screenshot.titleDescription.a11y" = "Nomination form showing title and description fields";
+"guide.screenshot.category.caption" = "Category tag picker";
+"guide.screenshot.category.a11y" = "Category picker with tags such as library and public art";
+"guide.screenshot.preview.caption" = "Preview before continuing";
+"guide.screenshot.preview.a11y" = "Preview screen summarizing nomination details";
+"guide.screenshot.supporting.caption" = "Supporting information";
+"guide.screenshot.supporting.a11y" = "Supporting information screen with eligibility context";
+"guide.screenshot.upload.caption" = "Upload now or later";
+"guide.screenshot.upload.a11y" = "Upload confirmation with upload now and upload later options";
+

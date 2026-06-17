@@ -5,9 +5,11 @@ import XCTest
 /// two-column editor. Identifiers mirror `Support/AccessibilityIDs.swift`.
 final class LandscapeLayoutUITests: XCTestCase {
     private enum ID {
+        static let libraryRoot = "submissionLibrary.root"
         static let addButton = "submissionLibrary.addButton"
         static let placeNameField = "submissionEditor.placeNameField"
         static let generateButton = "submissionEditor.generateButton"
+        static let titleField = "submissionEditor.titleField"
         static let saveButton = "submissionEditor.saveButton"
     }
 
@@ -19,12 +21,16 @@ final class LandscapeLayoutUITests: XCTestCase {
         XCUIDevice.shared.orientation = .portrait
     }
 
-    func testCreateInLandscape() {
+    func testCreateInLandscape() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-uitest-reset", "-disable-telemetry"]
+        app.launchArguments = ["-uitest-reset", "-disable-telemetry", "-skip_onboarding"]
         app.launch()
 
+        try skipUnlessPhoneFormFactor(app)
+
         XCUIDevice.shared.orientation = .landscapeLeft
+
+        XCTAssertTrue(UITestHelpers.waitForLibrary(app))
 
         app.buttons[ID.addButton].tap()
 
@@ -32,9 +38,27 @@ final class LandscapeLayoutUITests: XCTestCase {
         XCTAssertTrue(nameField.waitForExistence(timeout: 5))
         nameField.tap()
         nameField.typeText("Oakwood Trailhead")
+        UITestHelpers.dismissKeyboardIfPresent(in: app)
 
-        app.buttons[ID.generateButton].tap()
+        let generate = UITestHelpers.waitForGenerateButton(app)
+        generate.tap()
+
+        XCTAssertTrue(
+            app.textViews[ID.titleField].waitForExistence(timeout: 5)
+                || app.textFields[ID.titleField].waitForExistence(timeout: 1)
+        )
         XCTAssertTrue(app.buttons[ID.saveButton].isHittable)
         app.buttons[ID.saveButton].tap()
+
+        XCTAssertTrue(app.otherElements[ID.libraryRoot].waitForExistence(timeout: 5))
+    }
+}
+
+// MARK: - Device guard
+
+private func skipUnlessPhoneFormFactor(_ app: XCUIApplication) throws {
+    // iPhone portrait width is below ~430pt; iPad simulators are much wider.
+    guard app.windows.firstMatch.frame.width < 500 else {
+        throw XCTSkip("Run LandscapeLayoutUITests on the PokeStopBuddy iPhone simulator.")
     }
 }

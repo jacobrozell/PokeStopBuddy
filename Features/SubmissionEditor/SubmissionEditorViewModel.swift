@@ -13,6 +13,8 @@ public final class SubmissionEditorViewModel {
     public private(set) var errorMessage: String?
     public private(set) var didSave = false
 
+    public var submissionID: UUID { id }
+
     private let id: UUID
     private let createdAt: Date
     private var status: SubmissionStatus
@@ -48,6 +50,18 @@ public final class SubmissionEditorViewModel {
     }
 
     public var isExisting: Bool { !versions.isEmpty || !content.title.isEmpty }
+
+    /// True when the draft has enough input to persist or generate.
+    public var canSave: Bool {
+        !inputs.placeName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    public var canGenerate: Bool { canSave }
+
+    /// True when there is generated or edited content to copy or share.
+    public var hasShareableContent: Bool {
+        !content.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
 
     /// Plain-text bundle for copying into Wayfarer.
     public var clipboardText: String {
@@ -98,9 +112,14 @@ public final class SubmissionEditorViewModel {
             didSave = true
             errorMessage = nil
         } catch {
+            didSave = false
             errorMessage = L10n.string("error.save_failed")
             AppLog.data.error("Save failed: \(String(describing: error))")
         }
+    }
+
+    public func clearError() {
+        errorMessage = nil
     }
 
     private func currentSubmission() -> Submission {

@@ -7,7 +7,7 @@ public enum AppLinks {
     public static let accessibility = URL(string: "https://jacobrozell.github.io/pokestopbuddy/accessibility.html")!
 
     /// Niantic Wayfarer reference for users who want the official criteria.
-    public static let wayfarerGuidelines = URL(string: "https://niantic.helpshift.com/hc/en/19-niantic-wayfarer/")!
+    public static let wayfarerGuidelines = URL(string: "https://niantic.helpshift.com/hc/en/21-wayfarer/")!
 
     /// App Store review deep link — set when the listing exists.
     public static let appStoreReview: URL? = nil

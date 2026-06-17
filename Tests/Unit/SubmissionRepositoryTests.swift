@@ -43,3 +43,15 @@ final class InMemorySubmissionRepositoryTests: XCTestCase {
         XCTAssertTrue(try repo.all().isEmpty)
     }
 }
+
+@MainActor
+final class SwiftDataSubmissionRepositoryTests: XCTestCase {
+    func testSaveAndFetch_withInMemoryContainer() throws {
+        let container = try PersistenceContainerFactory.makeContainer(inMemory: true)
+        let repo = SwiftDataSubmissionRepository(container: container)
+        let submission = Submission(inputs: SubmissionInputs(placeName: "Mural"))
+        try repo.save(submission)
+        XCTAssertEqual(try repo.all().count, 1)
+        XCTAssertEqual(try repo.submission(id: submission.id)?.inputs.placeName, "Mural")
+    }
+}

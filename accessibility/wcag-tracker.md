@@ -7,11 +7,12 @@ Legend: ✅ implemented in code · 🟡 partial · 🔜 needs device verificatio
 
 | Screen | Labels/IDs | Dynamic Type | Non-color cues | 44pt targets | Orientation | Device-verified |
 |--------|-----------|--------------|----------------|--------------|-------------|-----------------|
-| Submission Library | ✅ | ✅ semantic styles | ✅ score badge icon+text | ✅ | 🟡 stack+split, UI smoke | 🔜 |
-| Submission Editor | ✅ | ✅ | ✅ severity icon+text | ✅ generate/save/feature/eligibility | 🟡 narrow+wide, landscape smoke | 🔜 |
-| Quality coach panel | ✅ | ✅ | ✅ | n/a | 🔜 | 🔜 |
+| Submission Library | ✅ | ✅ stacks rows at AXXXL | ✅ score badge icon+text | ✅ | 🟡 stack+split, UI smoke | 🔜 |
+| Submission Editor | ✅ | ✅ stacks columns at AXXXL | ✅ severity icon+text | ✅ generate/save/feature/eligibility | 🟡 narrow+wide, landscape smoke | 🔜 |
+| Quality coach panel | ✅ score announced | ✅ | ✅ | n/a | 🔜 | 🔜 |
 | Settings | ✅ | ✅ | ✅ | ✅ rows | 🔜 | 🔜 |
 | Persistence recovery | ✅ | ✅ | ✅ | ✅ reset | 🔜 | 🔜 |
+| Submission Guide | ✅ | ✅ semantic styles | ✅ callout kind+icon | ✅ hub/info/category rows | 🟡 hub+detail | 🔜 |
 
 ## Evidence to collect (Phase 11)
 

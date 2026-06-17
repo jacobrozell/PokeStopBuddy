@@ -48,11 +48,25 @@ public struct LayoutContext: Equatable, Sendable {
         idiom == .pad && horizontal == .regular
     }
 
-    /// Use the editor's two-column layout whenever there is regular width to spare —
-    /// iPad in any orientation, and large phones in landscape. A form genuinely benefits
-    /// from two columns when width allows, so this predicate is width-driven by intent.
+    /// Use the editor's two-column layout when horizontal width is regular (iPad, Pro Max
+    /// landscape) **or** when a phone is in landscape. Phones in landscape report compact
+    /// width but have ample horizontal points — splitting inputs from generated content
+    /// keeps the keyboard from burying Generate and the quality coach.
     public var editorUsesWideLayout: Bool {
-        horizontal == .regular
+        horizontal == .regular || (idiom == .phone && isLandscape)
+    }
+
+    /// At accessibility text sizes, prefer a single scrolling column so content is not
+    /// clipped or squeezed side-by-side.
+    public func effectiveEditorUsesWideLayout(isAccessibilityTextSize: Bool) -> Bool {
+        guard !isAccessibilityTextSize else { return false }
+        return editorUsesWideLayout
+    }
+
+    /// Generate moves to the nav toolbar in landscape on phones (compact reachability)
+    /// and in rare single-column landscape on iPad (e.g. slide-over).
+    public var editorShowsToolbarGenerate: Bool {
+        isLandscape && (idiom == .phone || !editorUsesWideLayout)
     }
 }
 

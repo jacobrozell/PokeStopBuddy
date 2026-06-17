@@ -28,6 +28,9 @@ Packages/
 *.p12
 *.mobileprovision
 
+# MCP simulator output
+tmp/
+
 # macOS
 .DS_Store
 

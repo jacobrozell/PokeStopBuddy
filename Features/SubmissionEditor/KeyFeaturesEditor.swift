@@ -7,9 +7,14 @@ struct KeyFeaturesEditor: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text(L10n.string("editor.keyFeatures"))
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.Colors.textSecondary)
+            HStack {
+                Text(L10n.string("editor.keyFeatures"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.Colors.textSecondary)
+                    .accessibilityAddTraits(.isHeader)
+                Spacer()
+                GuideInfoButton(topic: .fields)
+            }
 
             ForEach(Array(features.enumerated()), id: \.offset) { index, feature in
                 HStack {
@@ -28,6 +33,7 @@ struct KeyFeaturesEditor: View {
 
             HStack {
                 TextField(L10n.string("editor.addFeature"), text: $newFeature)
+                    .onSubmit { addFeature() }
                 Button {
                     addFeature()
                 } label: {
@@ -45,5 +51,6 @@ struct KeyFeaturesEditor: View {
         guard !trimmed.isEmpty else { return }
         features.append(trimmed)
         newFeature = ""
+        HapticFeedback.lightImpact()
     }
 }

@@ -5,9 +5,11 @@ import SwiftData
 /// used from the main actor (ViewModels driving SwiftUI satisfy this).
 @MainActor
 public final class SwiftDataSubmissionRepository: SubmissionRepository {
+    private let container: ModelContainer
     private let context: ModelContext
 
     public init(container: ModelContainer) {
+        self.container = container
         self.context = container.mainContext
     }
 

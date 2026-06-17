@@ -20,15 +20,16 @@ Target: **WCAG 2.1 AA**. No launch with open critical failures on core flows.
 
 | Screen | VoiceOver | Dynamic Type | Contrast | Orientation | Status |
 |--------|-----------|--------------|----------|-------------|--------|
-| Submission Library (list) | planned | planned | planned | planned | building |
-| Submission Editor | planned | planned | planned | planned | building |
-| Quality Coach panel | planned | planned | planned | planned | building |
+| Submission Library (list) | 🟡 labels+hints | 🟡 stacked rows at AXXXL | planned | planned | building |
+| Submission Editor | 🟡 announcements | 🟡 stacks at AXXXL | planned | planned | building |
+| Quality Coach panel | 🟡 score announced | 🟡 semantic styles | planned | planned | building |
 | Settings | planned | planned | planned | planned | building |
+| Submission Guide | 🟡 code complete | 🟡 stacks at AXXXL | 🟡 code complete | 🟡 code complete | building |
 
 Manual audits land dated in `accessibility/audits/`.
 
 ## Verification
 - Target release: v1.0
-- Last verified: 2026-06-16
-- Commit: (initial scaffold)
-- Primary code paths: DesignSystem/, Tests/Accessibility/
+- Last verified: 2026-06-17
+- Commit: (large text stacking + VoiceOver announcements)
+- Primary code paths: DesignSystem/Layout/AdaptiveLayout.swift, Support/AccessibilityAnnouncement.swift, Features/SubmissionEditor/, Features/SubmissionLibrary/SubmissionRow.swift, Tests/Unit/AdaptiveLayoutTests.swift

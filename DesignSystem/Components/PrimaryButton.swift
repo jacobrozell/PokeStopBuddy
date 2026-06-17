@@ -25,7 +25,10 @@ public struct PrimaryButton: View {
     }
 
     public var body: some View {
-        Button(action: action) {
+        Button {
+            guard isEnabled else { return }
+            action()
+        } label: {
             HStack(spacing: Theme.Spacing.sm) {
                 if let systemImage {
                     Image(systemName: systemImage)
@@ -37,8 +40,11 @@ public struct PrimaryButton: View {
         }
         .buttonStyle(.borderedProminent)
         .controlSize(.large)
-        .disabled(!isEnabled)
+        .opacity(isEnabled ? 1 : 0.45)
+        .allowsHitTesting(isEnabled)
+        .accessibilityElement(children: .ignore)
         .accessibilityIdentifier(identifier)
         .accessibilityLabel(Text(title))
+        .accessibilityAddTraits(.isButton)
     }
 }

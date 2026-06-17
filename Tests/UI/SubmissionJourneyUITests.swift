@@ -19,10 +19,14 @@ final class SubmissionJourneyUITests: XCTestCase {
         continueAfterFailure = false
     }
 
-    func testCreateGenerateSaveJourney() {
+    func testCreateGenerateSaveJourney() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-uitest-reset", "-disable-telemetry"]
+        app.launchArguments = ["-uitest-reset", "-disable-telemetry", "-skip_onboarding"]
         app.launch()
+
+        try skipUnlessPhoneFormFactor(app)
+
+        XCTAssertTrue(UITestHelpers.waitForLibrary(app))
 
         app.buttons[ID.addButton].tap()
 
@@ -30,8 +34,10 @@ final class SubmissionJourneyUITests: XCTestCase {
         XCTAssertTrue(nameField.waitForExistence(timeout: 5))
         nameField.tap()
         nameField.typeText("Riverside Community Mural")
+        UITestHelpers.dismissKeyboardIfPresent(in: app)
 
-        app.buttons[ID.generateButton].tap()
+        let generate = UITestHelpers.waitForGenerateButton(app)
+        generate.tap()
 
         // Generated title should be present (TextField or TextView depending on size).
         XCTAssertTrue(
@@ -41,5 +47,11 @@ final class SubmissionJourneyUITests: XCTestCase {
         app.buttons[ID.saveButton].tap()
 
         XCTAssertTrue(app.otherElements[ID.libraryRoot].waitForExistence(timeout: 5))
+    }
+}
+
+private func skipUnlessPhoneFormFactor(_ app: XCUIApplication) throws {
+    guard app.windows.firstMatch.frame.width < 500 else {
+        throw XCTSkip("Run SubmissionJourneyUITests on the PokeStopBuddy iPhone simulator.")
     }
 }

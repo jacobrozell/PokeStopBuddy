@@ -6,10 +6,30 @@ import SwiftUI
 struct RootView: View {
     let dependencies: AppDependencies
 
+    @State private var showsOnboarding = false
+    private let onboardingStore = OnboardingStore()
+
     var body: some View {
         SubmissionLibraryView(dependencies: dependencies)
             .resolveLayoutContext()
             .preferredColorScheme(dependencies.preferences.appearance.colorScheme)
+            .onAppear {
+                presentOnboardingIfNeeded()
+            }
+            .fullScreenCover(isPresented: $showsOnboarding) {
+                OnboardingFlowView(
+                    mode: .firstLaunch,
+                    dependencies: dependencies,
+                    store: onboardingStore
+                ) {
+                    showsOnboarding = false
+                }
+            }
+    }
+
+    private func presentOnboardingIfNeeded() {
+        guard onboardingStore.shouldPresentOnLaunch, !showsOnboarding else { return }
+        showsOnboarding = true
     }
 }
 

@@ -49,6 +49,9 @@ Splash accessibility: combined element, label `launch.loading`, id `launch.splas
 | How it works | 2/3 | Draft → Generate → Copy to Wayfarer | Continue |
 | Ready | 3/3 | Summary | Get started |
 
+On the **Defaults** step (and steps after), changing **Appearance** live-previews the
+selected light/dark/system scheme. Welcome stays on the branded dark launch look.
+
 Skip on welcome: jumps to **Ready** (still shows back). Completing Ready calls
 `OnboardingStore.markCompleted()`.
 

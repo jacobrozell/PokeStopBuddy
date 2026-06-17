@@ -21,7 +21,7 @@ struct OnboardingFlowView: View {
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: step)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(preferredOnboardingColorScheme)
         .interactiveDismissDisabled(mode == .firstLaunch)
         .accessibilityIdentifier(AccessibilityIDs.Onboarding.root)
     }
@@ -62,6 +62,16 @@ struct OnboardingFlowView: View {
             ) {
                 completeOnboarding()
             }
+        }
+    }
+
+    /// Branded welcome stays dark; later steps live-preview the user's appearance choice.
+    private var preferredOnboardingColorScheme: ColorScheme? {
+        switch step {
+        case .welcome:
+            return .dark
+        default:
+            return dependencies.preferences.appearance.colorScheme
         }
     }
 

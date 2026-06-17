@@ -7,6 +7,8 @@ struct OnboardingDefaultsStepView: View {
     let onBack: () -> Void
     let onNext: () -> Void
 
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         @Bindable var preferences = dependencies.preferences
         return OnboardingStepChrome(
@@ -80,14 +82,14 @@ struct OnboardingDefaultsStepView: View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
             Text(L10n.string(titleKey))
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.72))
+                .foregroundStyle(OnboardingStyle.chromeText(for: colorScheme))
             content()
                 .tint(.cyan)
-                .foregroundStyle(.white)
+                .foregroundStyle(OnboardingStyle.primaryText(for: colorScheme))
         }
         .padding(Theme.Spacing.md)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: Theme.Radius.md))
+        .background(OnboardingStyle.cardFill(for: colorScheme), in: RoundedRectangle(cornerRadius: Theme.Radius.md))
         .accessibilityIdentifier(identifier)
     }
 }

@@ -45,10 +45,10 @@ explicitly.
 Portrait + landscape on iPhone and iPad (`Info.plist`, see `specs/accessibility.md`).
 The core journey (create → generate → save) is covered by a portrait UI smoke
 (`SubmissionJourneyUITests` on iPhone), a landscape smoke (`LandscapeLayoutUITests` on
-iPhone), and an iPad split smoke (`IPadSplitLayoutUITests` on `PokeStopBuddy iPad`).
+iPhone), and an iPad split smoke (`IPadSplitLayoutUITests` on `WaypointWriter iPad`).
 
 ## Verification
 - Target release: v1.0
 - Last verified: 2026-06-17
-- Commit: (iPad split — save selection + `PokeStopBuddy iPad` simulator)
+- Commit: (iPad split — save selection + `WaypointWriter iPad` simulator)
 - Primary code paths: App/RootView.swift, Features/SubmissionLibrary/SubmissionLibraryView.swift, Features/SubmissionEditor/SubmissionEditorView.swift, DesignSystem/Layout/AdaptiveLayout.swift, Tests/UI/IPadSplitLayoutUITests.swift

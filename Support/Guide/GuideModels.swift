@@ -55,7 +55,7 @@ public struct GuideArticle: Sendable {
     public let sections: [GuideSection]
     public let screenshots: [GuideScreenshotRef]
     public let relatedTopics: [GuideTopic]
-    public let buddyCalloutKey: String?
+    public let appCalloutKey: String?
 
     public init(
         topic: GuideTopic,
@@ -63,13 +63,13 @@ public struct GuideArticle: Sendable {
         sections: [GuideSection],
         screenshots: [GuideScreenshotRef] = [],
         relatedTopics: [GuideTopic] = [],
-        buddyCalloutKey: String? = nil
+        appCalloutKey: String? = nil
     ) {
         self.topic = topic
         self.introKey = introKey
         self.sections = sections
         self.screenshots = screenshots
         self.relatedTopics = relatedTopics
-        self.buddyCalloutKey = buddyCalloutKey
+        self.appCalloutKey = appCalloutKey
     }
 }

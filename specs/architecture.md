@@ -29,7 +29,7 @@ Domain (pure logic)  ◄── Data (repository protocols + DTO mapping)
 | `Features/SubmissionLibrary` | list + detail of saved submissions |
 | `Features/SubmissionEditor` | the core create/generate/iterate journey |
 | `Features/Settings` | preferences + external links |
-| `App` | `PokeStopBuddyApp`, `AppDependencies`, `RootView` |
+| `App` | `WaypointWriterApp`, `AppDependencies`, `RootView` |
 | `Support` | `AppLinks`, `ReleaseSurface`, `FeatureFlags`, `AccessibilityIDs`, `AppLog` |
 | `DesignSystem` | `Theme`, color/space/type tokens, reusable components |
 

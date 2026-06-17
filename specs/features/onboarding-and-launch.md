@@ -29,7 +29,7 @@ Branded cold start and a short first-run tour (Dart Buddy / MiniMuster pattern).
 ```
 UILaunchScreen (solid LaunchBackground only — no UIImage; avoids full-screen stretch)
         ↓
-PokeStopBuddyApp bootstrap (async task, min ~500ms hold when motion on)
+WaypointWriterApp bootstrap (async task, min ~500ms hold when motion on)
         ↓
 LaunchSplashView (mark + wordmark + loading dots) → cross-fade
         ↓
@@ -68,4 +68,4 @@ See `AccessibilityIDs.Onboarding` and `AccessibilityIDs.Launch`.
 - Target release: v1.1
 - Last verified: 2026-06-17
 - Commit: (onboarding-and-launch)
-- Primary code paths: App/PokeStopBuddyApp.swift, App/RootView.swift, DesignSystem/Components/LaunchSplashView.swift, Features/Onboarding/, Support/Onboarding/OnboardingStore.swift, Features/Settings/SettingsView.swift, Tests/Unit/OnboardingStoreTests.swift
+- Primary code paths: App/WaypointWriterApp.swift, App/RootView.swift, DesignSystem/Components/LaunchSplashView.swift, Features/Onboarding/, Support/Onboarding/OnboardingStore.swift, Features/Settings/SettingsView.swift, Tests/Unit/OnboardingStoreTests.swift

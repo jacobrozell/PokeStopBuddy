@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 /// Contract tests for submission-guide accessibility semantics (no simulator).
 final class GuideAccessibilityContractTests: XCTestCase {

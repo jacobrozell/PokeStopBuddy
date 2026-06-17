@@ -1,4 +1,4 @@
-# Contributing to PokeStop Buddy
+# Contributing to Waypoint Writer
 
 Read this before writing code. Agents: this is your style + architecture contract.
 

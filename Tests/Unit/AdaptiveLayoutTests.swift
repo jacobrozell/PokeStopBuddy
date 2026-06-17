@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class AdaptiveLayoutTests: XCTestCase {
     private func context(_ idiom: LayoutIdiom, _ h: LayoutSizeClass, _ v: LayoutSizeClass) -> LayoutContext {

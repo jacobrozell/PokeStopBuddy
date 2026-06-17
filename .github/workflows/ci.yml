@@ -15,7 +15,7 @@ jobs:
     name: Build & test (PR scheme)
     runs-on: macos-15
     env:
-      SCHEME: PokeStopBuddyCI
+      SCHEME: WaypointWriterCI
       DESTINATION: 'platform=iOS Simulator,name=iPhone 16'
     steps:
       - uses: actions/checkout@v4

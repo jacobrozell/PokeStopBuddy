@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 /// Contract tests for accessibility-relevant pure logic (no simulator needed).
 /// Live AX-tree audits run in the UI suite via `performAccessibilityAudit`.

@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class SubmissionQualityEvaluatorTests: XCTestCase {
     private let evaluator = SubmissionQualityEvaluator()

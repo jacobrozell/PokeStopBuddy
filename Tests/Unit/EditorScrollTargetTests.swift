@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class EditorScrollTargetTests: XCTestCase {
     func testQualityFieldMapsToScrollTarget() {

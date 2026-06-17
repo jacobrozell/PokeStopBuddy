@@ -32,7 +32,7 @@ struct GuideTopicDetailView: View {
             screenshotsBlock
             sectionsBlock
             categoryGridIfNeeded
-            buddyCalloutBlock
+            appCalloutBlock
             relatedTopicsBlock
         }
         .padding(Theme.Spacing.md)
@@ -51,7 +51,7 @@ struct GuideTopicDetailView: View {
                 introBlock
                 sectionsBlock
                 categoryGridIfNeeded
-                buddyCalloutBlock
+                appCalloutBlock
                 relatedTopicsBlock
             }
             .frame(maxWidth: .infinity)
@@ -120,9 +120,9 @@ struct GuideTopicDetailView: View {
     }
 
     @ViewBuilder
-    private var buddyCalloutBlock: some View {
-        if let buddyCalloutKey = article.buddyCalloutKey {
-            GuideBuddyCallout(textKey: buddyCalloutKey)
+    private var appCalloutBlock: some View {
+        if let appCalloutKey = article.appCalloutKey {
+            GuideAppCallout(textKey: appCalloutKey)
         }
     }
 

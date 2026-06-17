@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class ReleaseSurfaceTests: XCTestCase {
     func testReleaseDefaults_hideGatedFeatures() {

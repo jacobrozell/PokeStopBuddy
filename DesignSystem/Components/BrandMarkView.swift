@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Flat-top hexagon used for the PokeStop Buddy brand mark.
+/// Flat-top hexagon used for the Waypoint Writer brand mark.
 struct BrandHexagonShape: Shape {
     var cornerRadius: CGFloat = 0
 

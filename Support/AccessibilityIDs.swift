@@ -17,6 +17,7 @@ public enum AccessibilityIDs {
         public static let generateButton = "submissionEditor.generateButton"
         public static let saveButton = "submissionEditor.saveButton"
         public static let copyAllButton = "submissionEditor.copyAllButton"
+        public static let shareButton = "submissionEditor.shareButton"
         public static let titleField = "submissionEditor.titleField"
         public static let descriptionField = "submissionEditor.descriptionField"
         public static let supportingField = "submissionEditor.supportingField"

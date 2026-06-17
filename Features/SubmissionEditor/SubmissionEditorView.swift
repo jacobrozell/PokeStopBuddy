@@ -146,6 +146,11 @@ struct SubmissionEditorView: View {
                 Label(L10n.string("editor.copyAll"), systemImage: "doc.on.doc")
             }
             .accessibilityIdentifier(AccessibilityIDs.Editor.copyAllButton)
+
+            ShareLink(item: model.clipboardText) {
+                Label(L10n.string("editor.share"), systemImage: "square.and.arrow.up")
+            }
+            .accessibilityIdentifier(AccessibilityIDs.Editor.shareButton)
         }
         .onChange(of: model.content) { _, _ in model.refreshQuality() }
     }

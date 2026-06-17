@@ -31,7 +31,7 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 | 7 | Shared chrome & adaptive layout | ✅ iPad split + two-column editor, idiom-aware predicates (tested) |
 | 8 | Entity management & settings | ✅ settings + persisted preferences; CRUD via editor/library |
 | 9 | Lists, history & derived views | 🟡 partial (library ✅) |
-| 10 | Localization & text coverage | 🟡 `en` only |
+| 10 | Localization & text coverage | 🟡 `en` only, all strings via L10n + parity/drift test |
 | 11 | Accessibility hardening (gate) | 🔜 needs sim/device |
 | 12 | Test matrix & CI | 🟡 PR CI (lint+unit+a11y) + nightly UI matrix workflows in place; needs first green run |
 | 13 | Release surface & lean ship | ✅ surface module in place |

@@ -18,7 +18,8 @@ Legend: ✅ shipped · 🟡 partial · 🔜 planned · 🧪 stub
 | Preferences (appearance + new-submission defaults) | ✅ | `AppPreferences`, persisted, unit-tested |
 | Design system tokens + components | ✅ | |
 | Adaptive layout (iPad split + two-column editor) | ✅ | pure `LayoutContext`, unit + landscape UI tests |
-| Localization (`en`) | ✅ | `L10n` wrapper |
+| Localization (`en`) | ✅ | `L10n` wrapper + parity/drift test |
+| Copy-all / ShareLink for submission content | ✅ | quick hand-off into Wayfarer |
 | Photo composition guidance | 🔜 | gated, v1.1 |
 | LLM "enhance" generation | 🔜 | gated, behind `ContentGenerating` |
 | Export / share pack | 🔜 | gated, v1.2 |

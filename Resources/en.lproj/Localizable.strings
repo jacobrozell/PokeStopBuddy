@@ -32,6 +32,7 @@
 "editor.field.description" = "Description";
 "editor.field.supporting" = "Supporting statement";
 "editor.copyAll" = "Copy all";
+"editor.share" = "Share";
 "editor.versions" = "Version history (%d)";
 "editor.version.generated" = "Generated";
 "editor.version.edited" = "Manual edit";

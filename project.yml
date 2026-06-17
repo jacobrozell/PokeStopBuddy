@@ -41,15 +41,9 @@ targets:
         SUPPORTS_MACCATALYST: NO
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
-    preBuildScripts:
-      - name: SwiftLint
-        script: |
-          if which swiftlint >/dev/null; then
-            swiftlint --quiet
-          else
-            echo "warning: SwiftLint not installed (brew install swiftlint)"
-          fi
-        basedOnDependencyAnalysis: false
+    # No SwiftLint prebuild script: CI lints before xcodebuild and the pre-commit hook
+    # covers local dev. Running it as a script phase tangles with Xcode 16's user-script
+    # sandbox (deny file-read-data on source dirs) for zero added safety.
 
   PokeStopBuddyTests:
     type: bundle.unit-test

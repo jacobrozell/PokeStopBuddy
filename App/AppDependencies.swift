@@ -27,9 +27,17 @@ public final class AppDependencies {
         self.releaseSurface = ReleaseSurface(flags: flags)
     }
 
-    /// Live bootstrap. Returns a fail-fast error string if persistence can't start so
-    /// the app can show a recovery screen instead of crashing.
-    public static func bootstrap(flags: FeatureFlags = .fromProcess()) -> Result<AppDependencies, String> {
+    /// Surfaced when persistence can't start (fail-fast). Carries a message the
+    /// recovery screen can display verbatim.
+    public struct BootstrapError: Error {
+        public let message: String
+    }
+
+    /// Live bootstrap. Returns a `BootstrapError` if persistence can't start so the
+    /// app can show a recovery screen instead of crashing.
+    public static func bootstrap(
+        flags: FeatureFlags = .fromProcess()
+    ) -> Result<AppDependencies, BootstrapError> {
         do {
             let container = try PersistenceContainerFactory.makeContainer()
             let repository = SwiftDataSubmissionRepository(container: container)
@@ -52,7 +60,7 @@ public final class AppDependencies {
             ))
         } catch {
             AppLog.data.error("Persistence bootstrap failed: \(error.localizedDescription)")
-            return .failure(error.localizedDescription)
+            return .failure(BootstrapError(message: error.localizedDescription))
         }
     }
 

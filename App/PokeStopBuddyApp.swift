@@ -9,8 +9,8 @@ struct PokeStopBuddyApp: App {
             switch bootstrap {
             case .success(let dependencies):
                 RootView(dependencies: dependencies)
-            case .failure(let message):
-                PersistenceErrorView(message: message)
+            case .failure(let error):
+                PersistenceErrorView(message: error.message)
             }
         }
     }

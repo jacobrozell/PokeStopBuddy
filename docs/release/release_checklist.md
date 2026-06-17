@@ -34,6 +34,8 @@ Scoped to **what v1.0 actually exposes** (see `specs/feature-flags.md`).
 
 - [ ] GitHub Pages serving `docs/*.html`
 - [ ] Privacy + Support URLs set in App Store Connect
+- [ ] Listing copy pasted from `docs/release/app-store-listing.md`
+- [ ] TestFlight beta description + What to Test updated for this build
 - [ ] Screenshots show only shipped, ungated features
 - [ ] Subtitle/keywords claim only shipped features
 - [ ] App is not affiliated-with disclaimer present in listing

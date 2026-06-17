@@ -26,7 +26,8 @@ public final class AppPreferences {
         self.defaults = defaults
         self.appearance = AppearanceMode(rawValue: defaults.string(forKey: Key.appearance) ?? "") ?? .system
         self.defaultStyle = GenerationStyle(rawValue: defaults.string(forKey: Key.defaultStyle) ?? "") ?? .descriptive
-        self.defaultCategory = WayspotCategory(rawValue: defaults.string(forKey: Key.defaultCategory) ?? "") ?? .publicArt
+        let categoryRaw = defaults.string(forKey: Key.defaultCategory) ?? ""
+        self.defaultCategory = WayspotCategory(rawValue: categoryRaw) ?? .publicArt
     }
 
     private enum Key {

@@ -16,72 +16,84 @@ public struct SubmissionQualityEvaluator: QualityEvaluating {
 
     public func evaluate(_ submission: Submission) -> QualityReport {
         var issues: [QualityIssue] = []
-        let content = submission.content
-        let inputs = submission.inputs
-
-        let title = content.title.trimmingCharacters(in: .whitespacesAndNewlines)
-        let description = content.description.trimmingCharacters(in: .whitespacesAndNewlines)
-        let supporting = content.supportingStatement.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        // Title checks.
-        if title.isEmpty {
-            issues.append(.init(severity: .blocker, field: .title,
-                                message: "Add a title — the real-world name of the place."))
-        } else {
-            if title.count < 3 {
-                issues.append(.init(severity: .warning, field: .title,
-                                    message: "Title looks very short; use the place's full name."))
-            }
-            if title.count > GenerationLimits.titleMax {
-                issues.append(.init(severity: .warning, field: .title,
-                                    message: "Title exceeds \(GenerationLimits.titleMax) characters."))
-            }
-            if isGenericTitle(title) {
-                issues.append(.init(severity: .warning, field: .title,
-                                    message: "Title is generic. Name the specific landmark, not just its type."))
-            }
-        }
-
-        // Description checks.
-        if description.isEmpty {
-            issues.append(.init(severity: .blocker, field: .description,
-                                message: "Add a description of what this place is."))
-        } else {
-            if description.count < 20 {
-                issues.append(.init(severity: .warning, field: .description,
-                                    message: "Description is thin; describe what makes it distinct."))
-            }
-            if description.count > GenerationLimits.descriptionMax {
-                issues.append(.init(severity: .warning, field: .description,
-                                    message: "Description exceeds \(GenerationLimits.descriptionMax) characters."))
-            }
-        }
-
-        // Eligibility.
-        if inputs.eligibility.isEmpty {
-            issues.append(.init(severity: .blocker, field: .eligibility,
-                                message: "Select at least one eligibility criterion it meets."))
-        }
-
-        // Supporting statement.
-        if supporting.isEmpty {
-            issues.append(.init(severity: .warning, field: .supporting,
-                                message: "Add a supporting statement explaining why it qualifies."))
-        } else if !mentionsLocation(submission) {
-            issues.append(.init(severity: .tip, field: .location,
-                                message: "Tip: tell the reviewer how to find it (a location or access note)."))
-        }
-
-        // Sensitive location.
+        issues += titleIssues(submission.content)
+        issues += descriptionIssues(submission.content)
+        issues += eligibilityIssues(submission.inputs)
+        issues += supportingIssues(submission)
         if let keyword = sensitiveMatch(submission) {
             issues.append(.init(severity: .warning, field: .general,
-                                message: "Mentions \"\(keyword)\" — schools and private property are usually ineligible."))
+                                message: sensitiveMessage(keyword)))
         }
-
         return QualityReport(score: score(for: issues), issues: sorted(issues))
     }
 
+    // MARK: - Per-field checks
+
+    private func titleIssues(_ content: GeneratedContent) -> [QualityIssue] {
+        let title = content.title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !title.isEmpty else {
+            return [.init(severity: .blocker, field: .title,
+                          message: "Add a title — the real-world name of the place.")]
+        }
+        var issues: [QualityIssue] = []
+        if title.count < 3 {
+            issues.append(.init(severity: .warning, field: .title,
+                                message: "Title looks very short; use the place's full name."))
+        }
+        if title.count > GenerationLimits.titleMax {
+            issues.append(.init(severity: .warning, field: .title,
+                                message: "Title exceeds \(GenerationLimits.titleMax) characters."))
+        }
+        if isGenericTitle(title) {
+            issues.append(.init(severity: .warning, field: .title,
+                                message: "Title is generic. Name the specific landmark, not just its type."))
+        }
+        return issues
+    }
+
+    private func descriptionIssues(_ content: GeneratedContent) -> [QualityIssue] {
+        let description = content.description.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !description.isEmpty else {
+            return [.init(severity: .blocker, field: .description,
+                          message: "Add a description of what this place is.")]
+        }
+        var issues: [QualityIssue] = []
+        if description.count < 20 {
+            issues.append(.init(severity: .warning, field: .description,
+                                message: "Description is thin; describe what makes it distinct."))
+        }
+        if description.count > GenerationLimits.descriptionMax {
+            issues.append(.init(severity: .warning, field: .description,
+                                message: "Description exceeds \(GenerationLimits.descriptionMax) characters."))
+        }
+        return issues
+    }
+
+    private func eligibilityIssues(_ inputs: SubmissionInputs) -> [QualityIssue] {
+        guard inputs.eligibility.isEmpty else { return [] }
+        return [.init(severity: .blocker, field: .eligibility,
+                      message: "Select at least one eligibility criterion it meets.")]
+    }
+
+    private func supportingIssues(_ submission: Submission) -> [QualityIssue] {
+        let supporting = submission.content.supportingStatement
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        if supporting.isEmpty {
+            return [.init(severity: .warning, field: .supporting,
+                          message: "Add a supporting statement explaining why it qualifies.")]
+        }
+        if !mentionsLocation(submission) {
+            return [.init(severity: .tip, field: .location,
+                          message: "Tip: tell the reviewer how to find it (a location or access note).")]
+        }
+        return []
+    }
+
     // MARK: - Helpers
+
+    private func sensitiveMessage(_ keyword: String) -> String {
+        "Mentions \"\(keyword)\" — schools and private property are usually ineligible."
+    }
 
     private func isGenericTitle(_ title: String) -> Bool {
         let words = title.lowercased().split(separator: " ").map(String.init)

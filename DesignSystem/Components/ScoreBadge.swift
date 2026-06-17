@@ -10,11 +10,20 @@ public struct ScoreBadge: View {
         self.identifier = identifier
     }
 
-    private var level: (symbol: String, color: Color, label: String) {
+    private struct Level {
+        let symbol: String
+        let color: Color
+        let label: String
+    }
+
+    private var level: Level {
         switch score {
-        case 80...: return ("checkmark.seal.fill", Theme.Colors.success, "Strong")
-        case 50..<80: return ("exclamationmark.triangle.fill", Theme.Colors.warning, "Needs work")
-        default: return ("exclamationmark.octagon.fill", Theme.Colors.critical, "Not ready")
+        case 80...:
+            return Level(symbol: "checkmark.seal.fill", color: Theme.Colors.success, label: "Strong")
+        case 50..<80:
+            return Level(symbol: "exclamationmark.triangle.fill", color: Theme.Colors.warning, label: "Needs work")
+        default:
+            return Level(symbol: "exclamationmark.octagon.fill", color: Theme.Colors.critical, label: "Not ready")
         }
     }
 

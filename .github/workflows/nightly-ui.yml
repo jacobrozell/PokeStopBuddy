@@ -8,18 +8,15 @@ on:
 jobs:
   ui-matrix:
     name: UI tests (${{ matrix.device }})
-    runs-on: macos-14
+    runs-on: macos-15
     strategy:
       fail-fast: false
       matrix:
         device:
-          - 'iPhone 15'
-          - 'iPad Pro (12.9-inch) (6th generation)'
+          - 'iPhone 16'
+          - 'iPad Pro 13-inch (M4)'
     steps:
       - uses: actions/checkout@v4
-
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_15.4.app
 
       - name: Install tooling
         run: brew install xcodegen xcbeautify || true

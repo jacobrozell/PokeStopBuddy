@@ -13,18 +13,16 @@ concurrency:
 jobs:
   build-test:
     name: Build & test (PR scheme)
-    runs-on: macos-14
+    runs-on: macos-15
     env:
       SCHEME: PokeStopBuddyCI
-      DESTINATION: 'platform=iOS Simulator,name=iPhone 15,OS=17.5'
+      DESTINATION: 'platform=iOS Simulator,name=iPhone 16'
     steps:
       - uses: actions/checkout@v4
 
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_15.4.app
-
       - name: Install tooling
         run: |
+          # Default Xcode on macos-15 (16.x) reads the project format XcodeGen emits.
           brew install xcodegen xcbeautify || true
           # SwiftLint is preinstalled on the macOS runner image; install if missing.
           which swiftlint || brew install swiftlint

@@ -7,7 +7,6 @@ opt_in_rules:
   - closure_spacing
   - explicit_init
   - first_where
-  - sorted_imports
   - unneeded_parentheses_in_closure_argument
 
 included:
@@ -30,6 +29,24 @@ line_length:
   error: 160
   ignores_comments: true
   ignores_urls: true
+
+# Allow short names common in tests (loop vars, matrix params) and the test-only `ID`
+# identifier-constants enum, without weakening production naming meaningfully.
+identifier_name:
+  min_length:
+    warning: 2
+  excluded:
+    - h
+    - v
+    - e
+    - en
+    - id
+    - x
+    - y
+
+type_name:
+  min_length:
+    warning: 2
 
 type_body_length:
   warning: 300

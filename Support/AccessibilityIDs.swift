@@ -25,6 +25,9 @@ public enum AccessibilityIDs {
 
     public enum Settings {
         public static let root = "settings.root"
+        public static let appearancePicker = "settings.appearancePicker"
+        public static let defaultStylePicker = "settings.defaultStylePicker"
+        public static let defaultCategoryPicker = "settings.defaultCategoryPicker"
         public static let privacyLink = "settings.privacyLink"
         public static let supportLink = "settings.supportLink"
         public static let accessibilityLink = "settings.accessibilityLink"

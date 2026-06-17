@@ -29,11 +29,11 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 | 5 | App shell & navigation | ✅ done |
 | 6 | First vertical slice (core journey) | ✅ done |
 | 7 | Shared chrome & adaptive layout | ✅ iPad split + two-column editor, idiom-aware predicates (tested) |
-| 8 | Entity management & settings | 🟡 partial (settings ✅) |
+| 8 | Entity management & settings | ✅ settings + persisted preferences; CRUD via editor/library |
 | 9 | Lists, history & derived views | 🟡 partial (library ✅) |
 | 10 | Localization & text coverage | 🟡 `en` only |
 | 11 | Accessibility hardening (gate) | 🔜 needs sim/device |
-| 12 | Test matrix & CI | 🟡 unit/a11y in place; CI workflow TODO |
+| 12 | Test matrix & CI | 🟡 PR CI (lint+unit+a11y) + nightly UI matrix workflows in place; needs first green run |
 | 13 | Release surface & lean ship | ✅ surface module in place |
 | 14 | Telemetry, deep links, extensions | 🔜 facade only |
 | 15 | Legal pages & store URLs | 🟡 HTML stubs |
@@ -51,6 +51,7 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 | 5 | 2026-06-16 | initial | app shell, DI, router |
 | 6 | 2026-06-16 | initial | editor vertical slice + library |
 | 7 | 2026-06-16 | adaptive | iPad NavigationSplitView, two-column editor, LayoutContext predicates + tests, landscape UI smoke |
+| 8 | 2026-06-16 | prefs | AppPreferences (appearance + defaults), persisted + tested; settings UI; appearance applied at root |
 
 ## What needs a Mac (cannot be done in this Linux session)
 

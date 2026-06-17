@@ -8,6 +8,7 @@ public final class AppDependencies {
     public let repository: any SubmissionRepository
     public let generator: any ContentGenerating
     public let evaluator: any QualityEvaluating
+    public let preferences: AppPreferences
     public let releaseSurface: ReleaseSurface
     public let flags: FeatureFlags
 
@@ -15,11 +16,13 @@ public final class AppDependencies {
         repository: any SubmissionRepository,
         generator: any ContentGenerating,
         evaluator: any QualityEvaluating,
+        preferences: AppPreferences,
         flags: FeatureFlags
     ) {
         self.repository = repository
         self.generator = generator
         self.evaluator = evaluator
+        self.preferences = preferences
         self.flags = flags
         self.releaseSurface = ReleaseSurface(flags: flags)
     }
@@ -44,6 +47,7 @@ public final class AppDependencies {
                 repository: repository,
                 generator: TemplateContentGenerator(),
                 evaluator: SubmissionQualityEvaluator(),
+                preferences: AppPreferences(),
                 flags: flags
             ))
         } catch {
@@ -58,7 +62,13 @@ public final class AppDependencies {
             repository: InMemorySubmissionRepository(seed: seed),
             generator: TemplateContentGenerator(),
             evaluator: SubmissionQualityEvaluator(),
+            preferences: AppPreferences(defaults: previewDefaults()),
             flags: .release
         )
+    }
+
+    /// An isolated, ephemeral defaults suite so previews/tests never touch `.standard`.
+    private static func previewDefaults() -> UserDefaults {
+        UserDefaults(suiteName: "com.pokestopbuddy.preview") ?? .standard
     }
 }

@@ -15,6 +15,7 @@ Legend: ✅ shipped · 🟡 partial · 🔜 planned · 🧪 stub
 | Submission Library (list/detail/delete) | ✅ | |
 | Quality Coach panel | ✅ | live scoring in editor |
 | Settings + external links | ✅ | privacy/support/accessibility; tip jar hidden |
+| Preferences (appearance + new-submission defaults) | ✅ | `AppPreferences`, persisted, unit-tested |
 | Design system tokens + components | ✅ | |
 | Adaptive layout (iPad split + two-column editor) | ✅ | pure `LayoutContext`, unit + landscape UI tests |
 | Localization (`en`) | ✅ | `L10n` wrapper |

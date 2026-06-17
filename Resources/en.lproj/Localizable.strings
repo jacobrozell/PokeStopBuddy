@@ -47,6 +47,11 @@
 
 /* Settings */
 "settings.title" = "Settings";
+"settings.section.appearance" = "Appearance";
+"settings.appearance" = "Theme";
+"settings.section.defaults" = "New submission defaults";
+"settings.defaultStyle" = "Writing style";
+"settings.defaultCategory" = "Category";
 "settings.section.about" = "Reference";
 "settings.section.legal" = "Support & legal";
 "settings.wayfarer" = "Wayfarer guidelines";

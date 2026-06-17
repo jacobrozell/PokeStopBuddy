@@ -31,3 +31,4 @@ Authoritative product & system specs. Behavior described here is the contract;
 | [`features/submission-editor.md`](features/submission-editor.md) | shipped (v1.0) |
 | [`features/submission-library.md`](features/submission-library.md) | shipped (v1.0) |
 | [`features/quality-coach.md`](features/quality-coach.md) | shipped (v1.0) |
+| [`features/settings.md`](features/settings.md) | shipped (v1.0) |

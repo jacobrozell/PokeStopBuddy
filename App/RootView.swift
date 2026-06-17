@@ -9,6 +9,7 @@ struct RootView: View {
     var body: some View {
         SubmissionLibraryView(dependencies: dependencies)
             .resolveLayoutContext()
+            .preferredColorScheme(dependencies.preferences.appearance.colorScheme)
     }
 }
 

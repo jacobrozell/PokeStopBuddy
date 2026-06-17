@@ -8,8 +8,34 @@ struct SettingsView: View {
     @State private var deleteError: String?
 
     var body: some View {
-        NavigationStack {
+        @Bindable var preferences = dependencies.preferences
+        return NavigationStack {
             Form {
+                Section(L10n.string("settings.section.appearance")) {
+                    Picker(L10n.string("settings.appearance"), selection: $preferences.appearance) {
+                        ForEach(AppearanceMode.allCases) { mode in
+                            Text(mode.displayName).tag(mode)
+                        }
+                    }
+                    .accessibilityIdentifier(AccessibilityIDs.Settings.appearancePicker)
+                }
+
+                Section(L10n.string("settings.section.defaults")) {
+                    Picker(L10n.string("settings.defaultStyle"), selection: $preferences.defaultStyle) {
+                        ForEach(GenerationStyle.allCases) { style in
+                            Text(style.displayName).tag(style)
+                        }
+                    }
+                    .accessibilityIdentifier(AccessibilityIDs.Settings.defaultStylePicker)
+
+                    Picker(L10n.string("settings.defaultCategory"), selection: $preferences.defaultCategory) {
+                        ForEach(WayspotCategory.allCases) { category in
+                            Text(category.displayName).tag(category)
+                        }
+                    }
+                    .accessibilityIdentifier(AccessibilityIDs.Settings.defaultCategoryPicker)
+                }
+
                 Section(L10n.string("settings.section.about")) {
                     Link(destination: AppLinks.wayfarerGuidelines) {
                         Label(L10n.string("settings.wayfarer"), systemImage: "book")

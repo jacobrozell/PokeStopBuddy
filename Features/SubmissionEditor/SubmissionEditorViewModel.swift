@@ -26,9 +26,14 @@ public final class SubmissionEditorViewModel {
         repository: any SubmissionRepository,
         generator: any ContentGenerating,
         evaluator: any QualityEvaluating,
+        defaultStyle: GenerationStyle = .descriptive,
+        defaultCategory: WayspotCategory = .publicArt,
         now: @escaping () -> Date = Date.init
     ) {
-        let submission = existing ?? Submission()
+        // New submissions inherit the user's preferred defaults; existing ones keep theirs.
+        let submission = existing ?? Submission(
+            inputs: SubmissionInputs(category: defaultCategory, style: defaultStyle)
+        )
         self.id = submission.id
         self.createdAt = submission.createdAt
         self.status = submission.status

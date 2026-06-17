@@ -20,7 +20,9 @@ struct SubmissionEditorView: View {
             existing: existing,
             repository: dependencies.repository,
             generator: dependencies.generator,
-            evaluator: dependencies.evaluator
+            evaluator: dependencies.evaluator,
+            defaultStyle: dependencies.preferences.defaultStyle,
+            defaultCategory: dependencies.preferences.defaultCategory
         ))
     }
 

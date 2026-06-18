@@ -1,12 +1,12 @@
-# Release checklist — PokeStop Buddy
+# Release checklist — Waypoint Writer
 
 Scoped to **what v1.0 actually exposes** (see `specs/feature-flags.md`).
 
 ## Pre-tag gate (~10 min)
 
 - [ ] `xcodegen generate` clean
-- [ ] `PokeStopBuddyCI` scheme: unit + accessibility green
-- [ ] `PokeStopBuddy` scheme: UI smoke (`SubmissionJourneyUITests`) green
+- [ ] `WaypointWriterCI` scheme: unit + accessibility green
+- [ ] `WaypointWriter` scheme: UI smoke (`SubmissionJourneyUITests`) green
 - [ ] SwiftLint clean (no errors)
 - [ ] Release-surface audit: gated features (photo guidance, LLM enhance, export) not reachable without `-enable_full_product_surface`
 - [ ] No hard-coded user strings (all via `L10n` / `Localizable.strings`)
@@ -28,12 +28,14 @@ Scoped to **what v1.0 actually exposes** (see `specs/feature-flags.md`).
 - [ ] Tip/donate link — keep hidden (`AppLinks.tipJar == nil`) or set URL
 - [ ] Locales — `en` only in bundle (confirmed)
 - [ ] Telemetry — off in Release (confirmed)
-- [ ] Bundle ID `com.pokestopbuddy.app` — new listing vs update
+- [ ] Bundle ID `com.jacobrozell.waypointwriter` — new listing vs update
 
 ## Store / legal
 
 - [ ] GitHub Pages serving `docs/*.html`
 - [ ] Privacy + Support URLs set in App Store Connect
+- [ ] Listing copy pasted from `docs/release/app-store-listing.md`
+- [ ] TestFlight beta description + What to Test updated for this build
 - [ ] Screenshots show only shipped, ungated features
 - [ ] Subtitle/keywords claim only shipped features
 - [ ] App is not affiliated-with disclaimer present in listing

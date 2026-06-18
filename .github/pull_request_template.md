@@ -10,7 +10,7 @@
 - [ ] New user-facing strings added to every bundled locale (`Resources/*.lproj`)
 - [ ] Accessibility: labels/identifiers, 44pt targets, non-color cues
 - [ ] Release surface unchanged, or gated via `Support/ReleaseSurface.swift`
-- [ ] `xcodegen generate` + `PokeStopBuddyCI` scheme green locally (if on macOS)
+- [ ] `xcodegen generate` + `WaypointWriterCI` scheme green locally (if on macOS)
 
 ## Notes for reviewers
 

@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct GuideBuddyCallout: View {
+struct GuideAppCallout: View {
     let textKey: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Label(L10n.string("guide.buddy.title"), systemImage: "sparkles")
+            Label(L10n.string("guide.app.title"), systemImage: "sparkles")
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Theme.Colors.accent)
             Text(L10n.string(textKey))

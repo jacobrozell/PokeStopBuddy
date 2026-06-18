@@ -1,9 +1,9 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 @MainActor
 final class AppPreferencesTests: XCTestCase {
-    private let suiteName = "com.pokestopbuddy.tests.preferences"
+    private let suiteName = "com.jacobrozell.waypointwriter.tests.preferences"
     private var defaults: UserDefaults!
 
     override func setUp() {

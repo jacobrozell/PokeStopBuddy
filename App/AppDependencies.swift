@@ -76,6 +76,6 @@ public final class AppDependencies {
 
     /// An isolated, ephemeral defaults suite so previews/tests never touch `.standard`.
     private static func previewDefaults() -> UserDefaults {
-        UserDefaults(suiteName: "com.pokestopbuddy.preview") ?? .standard
+        UserDefaults(suiteName: "com.jacobrozell.waypointwriter.preview") ?? .standard
     }
 }

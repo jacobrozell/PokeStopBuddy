@@ -1,0 +1,10 @@
+# Git / GitHub
+
+This repo is under the **jacobrozell** personal GitHub account. Always use the
+`github.com-personal` SSH host alias (key: `~/.ssh/id_ed25519_github_jacobrozell`).
+
+- Remote URL: `git@github.com-personal:jacobrozell/WaypointWriter.git`
+- Do **not** use `git@github.com:` for this repo — that key maps to `jrozellOCV`.
+
+When pushing or pulling, verify the remote uses `github.com-personal` before
+assuming auth failure.

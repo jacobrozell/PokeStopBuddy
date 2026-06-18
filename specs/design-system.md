@@ -2,7 +2,7 @@
 
 Two token layers, kept separate:
 
-- **Brand palette** — PokeStop Buddy marketing colors (accent blue/teal).
+- **Brand palette** — Waypoint Writer marketing colors (accent blue/teal).
 - **Semantic / system surfaces** — map to system materials so light/dark + contrast
   settings are respected.
 

@@ -1,5 +1,29 @@
 import SwiftUI
 
+enum OnboardingStyle {
+    static func background(for colorScheme: ColorScheme) -> Color {
+        colorScheme == .dark ? Color("LaunchBackground") : Theme.Colors.surface
+    }
+
+    static func primaryText(for colorScheme: ColorScheme) -> Color {
+        colorScheme == .dark ? .white : Theme.Colors.textPrimary
+    }
+
+    static func secondaryText(for colorScheme: ColorScheme) -> Color {
+        colorScheme == .dark ? .white.opacity(0.78) : Theme.Colors.textSecondary
+    }
+
+    static func chromeText(for colorScheme: ColorScheme) -> Color {
+        colorScheme == .dark ? .white.opacity(0.72) : Theme.Colors.textSecondary
+    }
+
+    static func cardFill(for colorScheme: ColorScheme) -> some ShapeStyle {
+        colorScheme == .dark
+            ? AnyShapeStyle(.white.opacity(0.08))
+            : AnyShapeStyle(Theme.Colors.surfaceSecondary)
+    }
+}
+
 enum OnboardingStep: Equatable {
     case welcome
     case defaults
@@ -37,6 +61,7 @@ struct OnboardingStepChrome<Content: View, Footer: View>: View {
     @ViewBuilder let content: () -> Content
     @ViewBuilder let footer: () -> Footer
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -54,7 +79,7 @@ struct OnboardingStepChrome<Content: View, Footer: View>: View {
 
     var body: some View {
         ZStack {
-            Color("LaunchBackground")
+            OnboardingStyle.background(for: colorScheme)
                 .ignoresSafeArea()
 
             GeometryReader { geometry in
@@ -90,7 +115,7 @@ struct OnboardingStepChrome<Content: View, Footer: View>: View {
                 ToolbarItem(placement: .principal) {
                     Text(L10n.string("onboarding.stepProgress", progressIndex, progressTotal))
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.72))
+                        .foregroundStyle(OnboardingStyle.chromeText(for: colorScheme))
                         .accessibilityLabel(
                             L10n.string("onboarding.stepProgress", progressIndex, progressTotal)
                         )
@@ -103,7 +128,7 @@ struct OnboardingStepChrome<Content: View, Footer: View>: View {
                     Button(action: onBack) {
                         Image(systemName: "chevron.left")
                             .font(.body.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(OnboardingStyle.primaryText(for: colorScheme))
                     }
                     .frame(minWidth: Theme.minTouchTarget, minHeight: Theme.minTouchTarget)
                     .accessibilityLabel(L10n.string("common.back"))
@@ -117,7 +142,7 @@ struct OnboardingStepChrome<Content: View, Footer: View>: View {
                         onSkip()
                     }
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.72))
+                    .foregroundStyle(OnboardingStyle.chromeText(for: colorScheme))
                     .frame(minWidth: Theme.minTouchTarget, minHeight: Theme.minTouchTarget)
                     .accessibilityIdentifier(AccessibilityIDs.Onboarding.skip)
                 }
@@ -132,6 +157,7 @@ struct OnboardingHeroContent: View {
     let titleKey: String
     let bodyKey: String
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
@@ -165,14 +191,14 @@ struct OnboardingHeroContent: View {
 
             Text(L10n.string(titleKey))
                 .font(.title.bold())
-                .foregroundStyle(.white)
+                .foregroundStyle(OnboardingStyle.primaryText(for: colorScheme))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .accessibilityAddTraits(.isHeader)
 
             Text(L10n.string(bodyKey))
                 .font(.body)
-                .foregroundStyle(.white.opacity(0.78))
+                .foregroundStyle(OnboardingStyle.secondaryText(for: colorScheme))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)
         }
@@ -184,6 +210,8 @@ struct OnboardingFeatureRow: View {
     let titleKey: String
     let bodyKey: String
     let identifier: String
+
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         HStack(alignment: .top, spacing: Theme.Spacing.md) {
@@ -197,15 +225,15 @@ struct OnboardingFeatureRow: View {
             VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
                 Text(L10n.string(titleKey))
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(OnboardingStyle.primaryText(for: colorScheme))
                 Text(L10n.string(bodyKey))
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.78))
+                    .foregroundStyle(OnboardingStyle.secondaryText(for: colorScheme))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(Theme.Spacing.md)
-        .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: Theme.Radius.md))
+        .background(OnboardingStyle.cardFill(for: colorScheme), in: RoundedRectangle(cornerRadius: Theme.Radius.md))
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier(identifier)
     }

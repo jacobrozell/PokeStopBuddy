@@ -8,8 +8,8 @@
 
 ## Schemes
 
-- **`PokeStopBuddyCI`** (PR gate): unit + accessibility only — minutes, not hours.
-- **`PokeStopBuddy`** (full): + UI tests; run nightly.
+- **`WaypointWriterCI`** (PR gate): unit + accessibility only — minutes, not hours.
+- **`WaypointWriter`** (full): + UI tests; run nightly.
 
 ## Launch arguments (UI tests)
 

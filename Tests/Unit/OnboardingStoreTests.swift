@@ -1,8 +1,8 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class OnboardingStoreTests: XCTestCase {
-    private let suiteName = "com.pokestopbuddy.tests.onboarding"
+    private let suiteName = "com.jacobrozell.waypointwriter.tests.onboarding"
     private var defaults: UserDefaults!
 
     override func setUp() {

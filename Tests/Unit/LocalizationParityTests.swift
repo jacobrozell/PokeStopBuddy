@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 /// Guards against code/strings drift: every key the UI references must exist in the
 /// bundled `en` table. As more locales are added, this test also enforces key parity.

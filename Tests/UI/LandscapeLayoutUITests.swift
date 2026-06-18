@@ -59,6 +59,6 @@ final class LandscapeLayoutUITests: XCTestCase {
 private func skipUnlessPhoneFormFactor(_ app: XCUIApplication) throws {
     // iPhone portrait width is below ~430pt; iPad simulators are much wider.
     guard app.windows.firstMatch.frame.width < 500 else {
-        throw XCTSkip("Run LandscapeLayoutUITests on the PokeStopBuddy iPhone simulator.")
+        throw XCTSkip("Run LandscapeLayoutUITests on the WaypointWriter iPhone simulator.")
     }
 }

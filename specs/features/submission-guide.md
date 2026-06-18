@@ -1,7 +1,7 @@
 # Feature: Submission Guide
 
 In-app education that teaches the **Pokémon GO / Niantic Wayfarer nomination flow**, explains
-how PokeStop Buddy fields map to in-game screens, and helps users pick the right **categories**
+how Waypoint Writer fields map to in-game screens, and helps users pick the right **categories**
 and **eligibility tags** before they copy content into the real submission form.
 
 Complements (does not replace) the external [Wayfarer guidelines](https://niantic.helpshift.com/hc/en/21-wayfarer/)
@@ -20,7 +20,7 @@ link in Settings.
 
 - Interactive quizzes or reviewer practice (see `FutureIdeas/backlog.md`).
 - Live nomination status or Wayfarer API integration.
-- Photo capture or pin placement inside PokeStop Buddy (deferred to Photo composition
+- Photo capture or pin placement inside Waypoint Writer (deferred to Photo composition
   guidance, v1.1).
 
 ## Information architecture
@@ -79,7 +79,7 @@ Shared template for every topic:
 │  • Bullet tips                      │
 │  • Callout cards (do / don't)       │
 ├─────────────────────────────────────┤
-│  "In PokeStop Buddy" callout        │  ← maps to editor fields
+│  "In Waypoint Writer" callout        │  ← maps to editor fields
 │  Related topics (chips)             │
 └─────────────────────────────────────┘
 ```
@@ -92,7 +92,7 @@ On iPad / wide width: screenshot left (~40%), text right (~60%). On phone: stack
 
 Maps the official Pokémon GO flow ([Niantic help](https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/41-contributing-to-the-pokemon-go-map/)):
 
-| Step | In Pokémon GO | PokeStop Buddy role |
+| Step | In Pokémon GO | Waypoint Writer role |
 |------|---------------|---------------------|
 | 1 | Main menu → Settings → Uploads → **New PokéStop** | — (in-game only) |
 | 2 | **Set location** on map; confirm pin | — (in-game only); tip: pin accuracy matters |
@@ -121,7 +121,7 @@ change — link to official FAQ, don't hard-code as permanent).
 
 #### `fields` — Field reference
 
-| PokeStop Buddy input | Pokémon GO / Wayfarer field | Limit | Notes |
+| Waypoint Writer input | Pokémon GO / Wayfarer field | Limit | Notes |
 |----------------------|----------------------------|-------|-------|
 | Place name | (drafting aid; becomes Title) | — | Raw name before title-case generation |
 | Category (`WayspotCategory`) | Step 6 category tag | pick one | Drives description phrasing |
@@ -138,7 +138,7 @@ Screenshot: `guide.process.titleDescription` annotated with callout lines to eac
 
 #### `categories` — Categories & tags
 
-Explains **Wayspot category tags** (Step 6) vs PokeStop Buddy's `WayspotCategory`.
+Explains **Wayspot category tags** (Step 6) vs Waypoint Writer's `WayspotCategory`.
 
 | `WayspotCategory` | Typical in-game examples | Primary pillar(s) | Example key features |
 |-------------------|-------------------------|-------------------|----------------------|
@@ -163,7 +163,7 @@ expands an example blurb. **Not** a picker — education only.
 Screenshot: `guide.process.category` with annotation mapping a few visible GO categories to
 our enum.
 
-Note: Pokémon GO also offers free-text "Other" category; PokeStop Buddy uses `other` and
+Note: Pokémon GO also offers free-text "Other" category; Waypoint Writer uses `other` and
 relies on key features + description for specificity.
 
 #### `eligibility` — Eligibility pillars
@@ -202,7 +202,7 @@ Cross-link: "Photo composition guidance" placeholder row (disabled until v1.1 sh
 
 #### `copyWorkflow` — Copy into Pokémon GO
 
-Step-by-step after drafting in PokeStop Buddy:
+Step-by-step after drafting in Waypoint Writer:
 
 1. Tap **Generate content** in the editor.
 2. Review Quality Coach — resolve blockers.
@@ -275,7 +275,7 @@ struct GuideArticle: Sendable {
     let sections: [GuideSection]
     let screenshotIDs: [String] // asset names, optional
     let relatedTopics: [GuideTopic]
-    let buddyCallout: String?   // "In PokeStop Buddy…"
+    let appCalloutKey: String?   // "In Waypoint Writer…"
 }
 
 struct GuideSection: Sendable {
@@ -313,7 +313,7 @@ struct GuideSection: Sendable {
 | `GuideCalloutCard` | Do / don't / tip styling |
 | `GuideCategoryGrid` | Category reference chips |
 | `GuidePillarCard` | Eligibility pillar explainer |
-| `GuideBuddyCallout` | Highlighted "In PokeStop Buddy" box |
+| `GuideAppCallout` | Highlighted "In Waypoint Writer" box |
 
 Reuse `TagChip`, `Card`, `PrimaryButton` from DesignSystem where applicable.
 

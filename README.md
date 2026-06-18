@@ -1,6 +1,6 @@
-# PokeStop Buddy
+# Waypoint Writer
 
-An iOS app to quickly draft, generate, and fine-tune **PokeStop / Niantic Wayfarer
+An iOS app to quickly draft, generate, and fine-tune **Wayspot / Niantic Wayfarer
 submission** content — titles, descriptions, and supporting statements — and iterate
 on them until they're submission-ready.
 
@@ -21,12 +21,12 @@ xcodegen generate
 
 # 2. Open and run, or build from CLI:
 xcodebuild build \
-  -scheme PokeStopBuddyCI \
+  -scheme WaypointWriterCI \
   -destination 'platform=iOS Simulator,name=iPhone 15'
 
 # 3. Run the fast PR test suite (unit + accessibility)
 xcodebuild test \
-  -scheme PokeStopBuddyCI \
+  -scheme WaypointWriterCI \
   -destination 'platform=iOS Simulator,name=iPhone 15'
 ```
 
@@ -50,7 +50,7 @@ xcodebuild test \
 
 | Decision | Value |
 |----------|-------|
-| Bundle ID | `com.pokestopbuddy.app` |
+| Bundle ID | `com.jacobrozell.waypointwriter` |
 | Min iOS | 17.0 |
 | Content generation | Offline template engine (LLM swappable behind `ContentGenerating`) |
 | Bundled locales | `en` only (parity files kept in repo for CI) |

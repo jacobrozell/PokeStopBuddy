@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>PokeStop Buddy</string>
+    <string>Waypoint Writer</string>
     <key>CFBundleDisplayName</key>
-    <string>PokeStop Buddy</string>
+    <string>Waypoint Writer</string>
     <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleExecutable</key>

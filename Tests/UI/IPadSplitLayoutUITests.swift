@@ -1,7 +1,7 @@
 import XCTest
 
 /// iPad split-view smoke: sidebar list + detail editor, create → generate → save.
-/// Run on the `PokeStopBuddy iPad` simulator (iPad Air 11-inch).
+/// Run on the `WaypointWriter iPad` simulator (iPad Air 11-inch).
 final class IPadSplitLayoutUITests: XCTestCase {
     private enum ID {
         static let libraryRoot = "submissionLibrary.root"
@@ -54,6 +54,6 @@ final class IPadSplitLayoutUITests: XCTestCase {
 
 private func skipUnlessPadFormFactor(_ app: XCUIApplication) throws {
     guard app.windows.firstMatch.frame.width >= 500 else {
-        throw XCTSkip("Run IPadSplitLayoutUITests on the PokeStopBuddy iPad simulator.")
+        throw XCTSkip("Run IPadSplitLayoutUITests on the WaypointWriter iPad simulator.")
     }
 }

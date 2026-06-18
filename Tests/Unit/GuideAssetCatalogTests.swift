@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 /// Verifies guide screenshot assets referenced by the catalog are bundled (or schematics apply).
 final class GuideAssetCatalogTests: XCTestCase {

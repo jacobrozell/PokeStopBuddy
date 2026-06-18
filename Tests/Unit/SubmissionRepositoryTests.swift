@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 @MainActor
 final class InMemorySubmissionRepositoryTests: XCTestCase {

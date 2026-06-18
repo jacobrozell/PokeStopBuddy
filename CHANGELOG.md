@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to PokeStop Buddy. Format loosely follows
+All notable changes to Waypoint Writer. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]

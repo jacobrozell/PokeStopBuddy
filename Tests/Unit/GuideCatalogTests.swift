@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class GuideCatalogTests: XCTestCase {
     func testEveryTopicHasArticle() {
@@ -36,7 +36,7 @@ final class GuideCatalogTests: XCTestCase {
 
     func testAllContentKeysExistInEnglish() throws {
         var keys: [String] = [
-            "guide.title", "guide.emptyLink", "guide.wayfarerLink", "guide.buddy.title",
+            "guide.title", "guide.emptyLink", "guide.wayfarerLink", "guide.app.title",
             "guide.related.title", "guide.screenshot.placeholder", "guide.infoButton.label",
             "guide.schematic.appMenu", "guide.schematic.settings", "guide.schematic.uploads",
             "guide.schematic.newPokestop", "guide.schematic.pinOnObject", "guide.schematic.mainPhoto",
@@ -58,7 +58,7 @@ final class GuideCatalogTests: XCTestCase {
             keys.append(topic.summaryKey)
             let article = GuideCatalog.article(for: topic)
             keys.append(article.introKey)
-            if let buddy = article.buddyCalloutKey { keys.append(buddy) }
+            if let buddy = article.appCalloutKey { keys.append(buddy) }
             for section in article.sections {
                 keys.append(section.headingKey)
                 if let body = section.bodyKey { keys.append(body) }

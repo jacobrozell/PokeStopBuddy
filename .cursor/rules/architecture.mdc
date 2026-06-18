@@ -1,5 +1,5 @@
 ---
-description: Core architecture & process rules for PokeStop Buddy
+description: Core architecture & process rules for Waypoint Writer
 alwaysApply: true
 ---
 
@@ -17,7 +17,7 @@ alwaysApply: true
   Verification block and `docs/feature-inventory.md` when behavior changes.
 - Test-first for domain & ViewModels. `Tests/Unit` before UI polish.
 - Project is generated: run `xcodegen generate`; never commit `.xcodeproj`.
-- Build/test with scheme `PokeStopBuddyCI`.
+- Build/test with scheme `WaypointWriterCI`.
 
 # Layout (phone vs iPad)
 

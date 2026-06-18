@@ -71,7 +71,7 @@ public enum GuideCatalog {
         ],
         screenshots: processScreenshots,
         relatedTopics: [.fields, .copyWorkflow, .photos],
-        buddyCalloutKey: "guide.process.buddy"
+        appCalloutKey: "guide.process.app"
     )
 
     private static let fieldsArticle = GuideArticle(
@@ -103,7 +103,7 @@ public enum GuideCatalog {
             ref("guide.process.titleDescription", caption: "guide.screenshot.titleDescription.caption", a11y: "guide.screenshot.titleDescription.a11y")
         ],
         relatedTopics: [.process, .categories, .eligibility],
-        buddyCalloutKey: "guide.fields.buddy"
+        appCalloutKey: "guide.fields.app"
     )
 
     private static let categoriesArticle = GuideArticle(
@@ -123,7 +123,7 @@ public enum GuideCatalog {
             ref("guide.process.category", caption: "guide.screenshot.category.caption", a11y: "guide.screenshot.category.a11y")
         ],
         relatedTopics: [.eligibility, .fields],
-        buddyCalloutKey: "guide.categories.buddy"
+        appCalloutKey: "guide.categories.app"
     )
 
     private static let eligibilityArticle = GuideArticle(
@@ -156,7 +156,7 @@ public enum GuideCatalog {
             ref("guide.process.supporting", caption: "guide.screenshot.supporting.caption", a11y: "guide.screenshot.supporting.a11y")
         ],
         relatedTopics: [.categories, .fields],
-        buddyCalloutKey: "guide.eligibility.buddy"
+        appCalloutKey: "guide.eligibility.app"
     )
 
     private static let photosArticle = GuideArticle(
@@ -182,7 +182,7 @@ public enum GuideCatalog {
         ],
         screenshots: photoScreenshots,
         relatedTopics: [.process, .fields],
-        buddyCalloutKey: "guide.photos.buddy"
+        appCalloutKey: "guide.photos.app"
     )
 
     private static let copyWorkflowArticle = GuideArticle(
@@ -210,6 +210,6 @@ public enum GuideCatalog {
             ref("guide.process.preview", caption: "guide.screenshot.preview.caption", a11y: "guide.screenshot.preview.a11y")
         ],
         relatedTopics: [.process, .fields],
-        buddyCalloutKey: "guide.copyWorkflow.buddy"
+        appCalloutKey: "guide.copyWorkflow.app"
     )
 }

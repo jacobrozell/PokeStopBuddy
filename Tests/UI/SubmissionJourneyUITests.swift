@@ -52,6 +52,6 @@ final class SubmissionJourneyUITests: XCTestCase {
 
 private func skipUnlessPhoneFormFactor(_ app: XCUIApplication) throws {
     guard app.windows.firstMatch.frame.width < 500 else {
-        throw XCTSkip("Run SubmissionJourneyUITests on the PokeStopBuddy iPhone simulator.")
+        throw XCTSkip("Run SubmissionJourneyUITests on the WaypointWriter iPhone simulator.")
     }
 }

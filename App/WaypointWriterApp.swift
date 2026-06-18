@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct PokeStopBuddyApp: App {
+struct WaypointWriterApp: App {
     @State private var bootstrapResult: Result<AppDependencies, BootstrapError>?
     @State private var showsLaunchSplash: Bool
 

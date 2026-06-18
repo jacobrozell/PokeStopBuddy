@@ -1,4 +1,4 @@
-# Agent Build Checklist — PokeStop Buddy (0 → Ship)
+# Agent Build Checklist — Waypoint Writer (0 → Ship)
 
 Adapted from the domain-agnostic iOS build checklist. Keep **spec-first**,
 **accessibility gate**, and **release-surface gating** — they transfer to every app.
@@ -10,7 +10,7 @@ gates, architecture reviews) lives in the original checklist; trigger phrases:
 
 | Decision | Value |
 |----------|-------|
-| App name / bundle | PokeStop Buddy / `com.pokestopbuddy.app` |
+| App name / bundle | Waypoint Writer / `com.jacobrozell.waypointwriter` |
 | Min iOS | 17.0 |
 | Content generation | Offline template engine (`ContentGenerating`) |
 | Bundled locales | `en` (parity files kept for CI) |

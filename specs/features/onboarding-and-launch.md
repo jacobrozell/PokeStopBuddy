@@ -29,7 +29,7 @@ Branded cold start and a short first-run tour (Dart Buddy / MiniMuster pattern).
 ```
 UILaunchScreen (solid LaunchBackground only — no UIImage; avoids full-screen stretch)
         ↓
-PokeStopBuddyApp bootstrap (async task, min ~500ms hold when motion on)
+WaypointWriterApp bootstrap (async task, min ~500ms hold when motion on)
         ↓
 LaunchSplashView (mark + wordmark + loading dots) → cross-fade
         ↓
@@ -48,6 +48,9 @@ Splash accessibility: combined element, label `launch.loading`, id `launch.splas
 | Defaults | 1/3 | Appearance, default style & category | Continue |
 | How it works | 2/3 | Draft → Generate → Copy to Wayfarer | Continue |
 | Ready | 3/3 | Summary | Get started |
+
+On the **Defaults** step (and steps after), changing **Appearance** live-previews the
+selected light/dark/system scheme. Welcome stays on the branded dark launch look.
 
 Skip on welcome: jumps to **Ready** (still shows back). Completing Ready calls
 `OnboardingStore.markCompleted()`.
@@ -68,4 +71,4 @@ See `AccessibilityIDs.Onboarding` and `AccessibilityIDs.Launch`.
 - Target release: v1.1
 - Last verified: 2026-06-17
 - Commit: (onboarding-and-launch)
-- Primary code paths: App/PokeStopBuddyApp.swift, App/RootView.swift, DesignSystem/Components/LaunchSplashView.swift, Features/Onboarding/, Support/Onboarding/OnboardingStore.swift, Features/Settings/SettingsView.swift, Tests/Unit/OnboardingStoreTests.swift
+- Primary code paths: App/WaypointWriterApp.swift, App/RootView.swift, DesignSystem/Components/LaunchSplashView.swift, Features/Onboarding/, Support/Onboarding/OnboardingStore.swift, Features/Settings/SettingsView.swift, Tests/Unit/OnboardingStoreTests.swift

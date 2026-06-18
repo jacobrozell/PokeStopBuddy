@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokeStopBuddy
+@testable import WaypointWriter
 
 final class TemplateContentGeneratorTests: XCTestCase {
     private let generator = TemplateContentGenerator()

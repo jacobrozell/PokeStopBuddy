@@ -124,10 +124,17 @@ private func hexPath(in rect: CGRect, cornerRadius: CGFloat) -> NSBezierPath {
     return roundedPolygonPath(points: points, radius: cornerRadius)
 }
 
-private func drawIcon() -> NSImage {
+private func drawIcon(into rep: NSBitmapImageRep) {
+    guard let graphicsContext = NSGraphicsContext(bitmapImageRep: rep) else { return }
+
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = graphicsContext
+
+    // Bitmap contexts use a bottom-left origin; flip to match SwiftUI / BrandMarkView.
+    graphicsContext.cgContext.translateBy(x: 0, y: canvas.height)
+    graphicsContext.cgContext.scaleBy(x: 1, y: -1)
+
     let layout = MarkLayout(markWidth: canvas.width * 0.58)
-    let image = NSImage(size: canvas)
-    image.lockFocus()
 
     launchBackground.setFill()
     NSBezierPath(rect: CGRect(origin: .zero, size: canvas)).fill()
@@ -141,36 +148,26 @@ private func drawIcon() -> NSImage {
     dotColor.setFill()
     NSBezierPath(ovalIn: layout.dotFrame).fill()
 
-    image.unlockFocus()
-    return image
+    NSGraphicsContext.restoreGraphicsState()
 }
 
-private func writePNG(_ image: NSImage, to url: URL) throws {
-    let rep = NSBitmapImageRep(
+private func writePNG(to url: URL) throws {
+    guard let rep = NSBitmapImageRep(
         bitmapDataPlanes: nil,
         pixelsWide: Int(canvas.width),
         pixelsHigh: Int(canvas.height),
         bitsPerSample: 8,
-        samplesPerPixel: 3,
-        hasAlpha: false,
+        samplesPerPixel: 4,
+        hasAlpha: true,
         isPlanar: false,
         colorSpaceName: .deviceRGB,
         bytesPerRow: 0,
         bitsPerPixel: 0
-    )
-    guard let rep else {
+    ) else {
         throw NSError(domain: "generate_app_icon", code: 1)
     }
 
-    NSGraphicsContext.saveGraphicsState()
-    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
-    image.draw(
-        in: CGRect(origin: .zero, size: canvas),
-        from: .zero,
-        operation: .copy,
-        fraction: 1
-    )
-    NSGraphicsContext.restoreGraphicsState()
+    drawIcon(into: rep)
 
     guard let data = rep.representation(using: .png, properties: [:]) else {
         throw NSError(domain: "generate_app_icon", code: 2)
@@ -180,5 +177,5 @@ private func writePNG(_ image: NSImage, to url: URL) throws {
 
 let output = repoRoot
     .appendingPathComponent("Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png")
-try writePNG(drawIcon(), to: output)
+try writePNG(to: output)
 print("Wrote \(output.path)")

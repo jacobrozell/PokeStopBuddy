@@ -11,4 +11,4 @@ chat output:
 - accessibility audit → `accessibility/audits/YYYY-MM-DD-*.md` (update `accessibility/wcag-tracker.md`)
 - user scenario → `docs/scenarios/YYYY-MM-DD-*.md` + an integration/UI test
 - release gate → check against `specs/feature-flags.md` + `docs/release/release_checklist.md`
-- architecture review → read-only summary; multi-phase plans go in `docs/plans/`
+- architecture review → read-only summary; multi-phase plans go in `ongoing/` (index in `ongoing/README.md`)
